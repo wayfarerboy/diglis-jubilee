@@ -53,7 +53,7 @@ const Wrapper = () => {
         }}
       >
         <AppWrapper
-          title="Diglis Jubilee Memories"
+          title="Diglis Jubilee: Memories"
           description="Explore Diglis and hear historical accounts from our community"
         />
         <Tracks data={data} />

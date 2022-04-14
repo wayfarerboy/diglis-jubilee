@@ -83,7 +83,7 @@ const Component = ({ onReady }) => {
   return (
     <ThemeProvider theme={darkTheme}>
       <AppWrapper
-        title="Diglis Jubilee"
+        title="Diglis Jubilee: Memories"
         description="Explore Diglis and hear historical accounts from our community"
         dark
       />
