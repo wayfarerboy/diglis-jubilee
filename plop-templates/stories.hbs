@@ -1,0 +1,18 @@
+import React from 'react';
+import {{component}} from '{{pathPrefix}}/components/{{componentName}}';
+import faker, { seed } from '{{pathPrefix}}/mocks/faker';
+
+seed('{{componentName}}');
+
+const story = {
+  title: '{{componentName}}',
+  component: {{component}},
+  args: {
+    title: faker.lorem.title(),
+  },
+};
+
+export const WithDefaults = () => <{{component}} />;
+export const WithValues = (props) => <{{component}} {...props} />;
+
+export default story;

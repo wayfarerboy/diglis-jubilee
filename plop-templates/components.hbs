@@ -1,0 +1,17 @@
+import React from 'react';
+import Box from '@mui/material/Box';
+import { object, string } from 'prop-types';
+
+const {{component}} = ({ title = 'Hello world', sx }) => {
+  return (
+    <Box sx={sx}>{title}</Box>
+  );
+};
+
+{{component}}.displayName = '{{displayName}}';
+{{component}}.propTypes = {
+  title: string,
+  sx: object,
+};
+
+export default {{component}};
