@@ -89,6 +89,11 @@ const activities = [
     linkText: 'Worcestershire Environment Group',
     href: 'https://www.theweg.org.uk/',
   },
+  {
+    text: 'Boat dressing and flotilla by the community at',
+    linkText: 'Diglis Waterside & Marina',
+    href: 'https://www.aquavista.com/find-a-marina/diglis-waterside-marina',
+  },
 ].sort(() => (Math.round(Math.random()) ? -1 : 1));
 
 const globalStyles = (
