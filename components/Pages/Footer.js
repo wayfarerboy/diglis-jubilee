@@ -17,6 +17,7 @@ const Footer = () => (
       zIndex: 1,
       pt: 10,
     }}
+    maxWidth={false}
   >
     <Image width={240} height={117} src={lottery} />
     <Typography variant="body2" paragraph>
