@@ -4,7 +4,7 @@ const nextConfig = {
   reactStrictMode: true,
   pwa: {
     dest: 'public',
-    disable: process.env.NODE_ENV === 'development',
+    disable: true || process.env.NODE_ENV === 'development',
   },
   images: {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384, 512],
