@@ -3,6 +3,7 @@ import GlobalStyles from '@mui/material/GlobalStyles';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import NoSsr from '@mui/material/NoSsr';
 
 import Footer from '../components/Pages/Footer';
 import Link from '../components/Link';
@@ -240,7 +241,7 @@ const Home = () => {
           bodyVariant="h6"
           bodySx={{ background: 'transparent' }}
           body={
-            <>
+            <NoSsr>
               {activities.map(({ text = '', linkText = '', href, path }, i) => (
                 <Typography
                   component="span"
@@ -267,7 +268,7 @@ const Home = () => {
                   )}{' '}
                 </Typography>
               ))}
-            </>
+            </NoSsr>
           }
         />
 

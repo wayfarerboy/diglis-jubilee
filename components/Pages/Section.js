@@ -71,7 +71,7 @@ const Section = ({
                 ...titleSx,
               }}
             >
-              <Typography display="inline" variant={variant}>
+              <Typography display="inline" variant={variant} component="div">
                 {title}
               </Typography>
             </Box>
@@ -124,13 +124,15 @@ const Section = ({
               ...imageSx,
             }}
           >
-            <Image
-              alt={`${keyId} background`}
-              src={image}
-              layout="fill"
-              placeholder="blur"
-              objectFit="cover"
-            />
+            <Box sx={{ position: 'relative', width: '100%', height: '100%' }}>
+              <Image
+                alt={`${keyId} background`}
+                src={image}
+                layout="fill"
+                placeholder="blur"
+                objectFit="cover"
+              />
+            </Box>
           </Box>
         )}
       </Box>
@@ -140,7 +142,7 @@ const Section = ({
 
 Section.propTypes = {
   image: oneOfType([object, string]),
-  title: string,
+  title: oneOfType([string, object]),
   body: any,
   bodyVariant: oneOfType([string, bool]),
   keyId: string,
