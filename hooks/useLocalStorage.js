@@ -1,9 +1,10 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import localforage from 'localforage';
 
 const useLocalStorage = (key, defaultValue) => {
   const dispatch = useDispatch();
+  const [inited, setInited] = useState(false);
   const item = useSelector(({ localStorage }) => localStorage[key]);
 
   const onSet = (value, opts = {}) => {
@@ -16,15 +17,25 @@ const useLocalStorage = (key, defaultValue) => {
   const onRemove = () => localforage.removeItem(key);
 
   useEffect(() => {
-    (async () => {
-      const newItem = await localforage.getItem(key);
-      if (typeof newItem === 'undefined') {
-        await onSet(defaultValue);
-      } else {
-        dispatch({ type: 'setLocalStorage', payload: { key, value: newItem } });
-      }
-    })();
-  }, [defaultValue, key]);
+    if (!inited) {
+      setInited(true);
+      (async () => {
+        const newItem = await localforage.getItem(key);
+        if (!newItem && newItem !== 0 && newItem !== false) {
+          dispatch({
+            type: 'setLocalStorage',
+            payload: { key, value: defaultValue },
+          });
+          await localforage.setItem(key, defaultValue);
+        } else {
+          dispatch({
+            type: 'setLocalStorage',
+            payload: { key, value: newItem },
+          });
+        }
+      })();
+    }
+  }, [inited, setInited]);
 
   return [item, onSet, onRemove];
 };

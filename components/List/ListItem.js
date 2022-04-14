@@ -38,6 +38,7 @@ const Component = ({
   const theme = useTheme();
   const dispatch = useDispatch();
   const isPlaying = useSelector(({ playback }) => playback.track === docId);
+  const playMode = useSelector(({ playback }) => playback.mode);
   const PlaybackIcon = isPlaying ? VolumeUp : PlayArrow;
   const onShow = () => {
     dispatch({ type: 'setAppDrawer', payload: null });
@@ -106,7 +107,11 @@ const Component = ({
           ) : (
             <TrackTitle
               animation={animation}
-              text={title || 'No track selected'}
+              text={
+                title || author || playMode === 'closest'
+                  ? 'No track selected'
+                  : 'No nearby memories'
+              }
               sx={{ textAlign: 'center' }}
             />
           )
@@ -114,7 +119,11 @@ const Component = ({
         primaryTypographyProps={
           variant === 'list' || dense ? { noWrap: true } : {}
         }
-        secondary={author || 'Choose one from map or playlist'}
+        secondary={
+          author || playMode === 'closest'
+            ? 'Choose one from map or playlist'
+            : 'Head towards a marker on the map'
+        }
         secondaryTypographyProps={
           variant === 'playback' && !dense
             ? {

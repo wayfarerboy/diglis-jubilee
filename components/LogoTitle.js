@@ -7,7 +7,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 import Logo from './Logo';
 
-const LogoTitle = ({ progress, children }) => {
+const LogoTitle = ({ progress, children, dark }) => {
   return (
     <Box
       sx={{
@@ -28,9 +28,15 @@ const LogoTitle = ({ progress, children }) => {
         justifyContent="center"
       >
         {progress && (
-          <CircularProgress size={24} color="secondary" sx={{ mr: 1 }} />
+          <CircularProgress
+            size={24}
+            color={dark ? 'primary' : 'secondary'}
+            sx={{ mr: 1 }}
+          />
         )}
-        <Typography variant="body2">{children}</Typography>
+        <Typography variant="body2" component="div">
+          {children}
+        </Typography>
       </Grid>
     </Box>
   );
@@ -40,6 +46,7 @@ LogoTitle.displayName = 'LogoTitle';
 LogoTitle.propTypes = {
   children: any,
   progress: bool,
+  dark: bool,
 };
 
 export default LogoTitle;

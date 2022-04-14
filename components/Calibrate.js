@@ -105,9 +105,13 @@ const Component = ({ onReady }) => {
         }}
         footer={
           <Container maxWidth="xs">
-            {!status && <LogoTitle progress>Loading...</LogoTitle>}
+            {!status && (
+              <LogoTitle dark progress>
+                Loading...
+              </LogoTitle>
+            )}
             {['initing', 'denied'].includes(status) && (
-              <LogoTitle>
+              <LogoTitle dark>
                 <Box sx={{ color: 'text.primary', mt: 2 }}>
                   <Typography variant="body2" paragraph>
                     In order to experience Diglis Jubilee memories as intended,
@@ -181,10 +185,12 @@ const Component = ({ onReady }) => {
               </LogoTitle>
             )}
             {(status === 'requesting' || (status === 'allowed' && !latlng)) && (
-              <LogoTitle progress>Pinpointing your location...</LogoTitle>
+              <LogoTitle dark progress>
+                Pinpointing your location...
+              </LogoTitle>
             )}
             {status === 'allowed' && !!latlng && (
-              <LogoTitle>
+              <LogoTitle dark>
                 <Typography
                   sx={{ color: 'primary.light' }}
                   variant="h6"
