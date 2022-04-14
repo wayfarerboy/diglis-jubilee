@@ -87,7 +87,7 @@ const activities = [
   },
   {
     text: 'Nature walks by',
-    linkText: 'Worcestershire Environment Group',
+    linkText: 'Worcestershire Environmental Group',
     href: 'https://www.theweg.org.uk/',
   },
   {
