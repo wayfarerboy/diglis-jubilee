@@ -56,9 +56,8 @@ const Cookies = () => {
             </Grid>
             <Grid item xs={12} sm>
               <Typography variant="body2">
-                We use cookies to feed back visitor numbers to our funders which
-                helps fund future community projects such as this one. Please
-                either accept or decline{' '}
+                We use cookies to monitor our page view and visitor numbers.
+                Please either accept or decline{' '}
                 <Link href={policyUrl}>our cookie policy</Link>.
               </Typography>
             </Grid>
