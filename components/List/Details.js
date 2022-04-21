@@ -2,7 +2,7 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Collapse from '@mui/material/Collapse';
 import Typography from '@mui/material/Typography';
-import { object } from 'prop-types';
+import { func, arrayOf, object } from 'prop-types';
 import Image from 'next/image';
 import { useSelector, useDispatch } from 'react-redux';
 import ButtonBase from '@mui/material/ButtonBase';
@@ -10,7 +10,10 @@ import VolumeUp from '@mui/icons-material/VolumeUp';
 import PlayArrow from '@mui/icons-material/PlayArrow';
 import Fab from '@mui/material/Fab';
 
-const Details = ({ onView, sx = {} }) => {
+import { dataItem } from '../../helpers/propTypes';
+import Compass from './Compass';
+
+const Details = ({ data, onView, sx = {} }) => {
   const dispatch = useDispatch();
 
   const exploreMode = useSelector(
@@ -21,6 +24,8 @@ const Details = ({ onView, sx = {} }) => {
   const { title, image, description, docId } = useSelector(
     ({ map }) => map.details,
   );
+  const item = data.find(({ id }) => docId === id);
+
   const playing = useSelector(({ playback }) => playback.track === docId);
 
   const onPlay = (ev) => {
@@ -55,7 +60,7 @@ const Details = ({ onView, sx = {} }) => {
           )}
           <Box sx={{ p: 2, pb: 4 }}>
             <Typography variant="h5" gutterBottom>
-              {(exploreMode || playing) && (
+              {exploreMode ? (
                 <Fab
                   sx={{ position: 'relative', top: -2, mr: 1 }}
                   onClick={onPlay}
@@ -68,6 +73,13 @@ const Details = ({ onView, sx = {} }) => {
                     <PlayArrow fontSize="medium" />
                   )}
                 </Fab>
+              ) : (
+                <Compass
+                  sx={{ display: 'inline-block', pr: 1 }}
+                  size="small"
+                  {...(item || {})}
+                  onClick={onView(item?.id)}
+                />
               )}
               {title}
             </Typography>
@@ -84,6 +96,8 @@ const Details = ({ onView, sx = {} }) => {
 Details.displayName = 'ListDetails';
 Details.propTypes = {
   sx: object,
+  onView: func,
+  data: arrayOf(dataItem),
 };
 
 export default Details;

@@ -16,7 +16,7 @@ const Description = ({ sx, title, image, docId, description }) => {
     });
   };
   return (
-    <Box sx={sx}>
+    <Box sx={sx} data-help="details">
       <IconButton disabled={!description} onClick={onOpen}>
         <Info />
       </IconButton>

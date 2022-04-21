@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import GlobalStyles from '@mui/material/GlobalStyles';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import NoSsr from '@mui/material/NoSsr';
 
+import Activities from '../components/Pages/Activities';
 import Footer from '../components/Pages/Footer';
 import Link from '../components/Link';
 import Logo from '../components/Logo';
@@ -13,6 +12,7 @@ import Section from '../components/Pages/Section';
 import home from '../assets/home/PXL_20220326_173153326.jpg';
 import involved from '../assets/home/PXL_20211231_083113472.jpg';
 import building from '../assets/home/PXL_20210724_080859055.jpg';
+import { globalStyles } from '../helpers/styles';
 
 // description="Explore Diglis and listen to stories from the last 70 years"
 
@@ -21,91 +21,6 @@ const images = {
   building,
   involved,
 };
-
-const activities = [
-  {
-    text: 'Jubilee-inspired community dance performance by',
-    linkText: 'Dancefest',
-    href: 'https://www.dancefest.co.uk/',
-  },
-  {
-    text: 'Live grafitti art from',
-    linkText: 'Worcester Paint Festival',
-    href: 'https://worcesterpaintfestival.co.uk/',
-  },
-  {
-    text: 'Live music from',
-    linkText: 'Immy & The Boatman',
-    href: 'https://www.facebook.com/Immy-The-Boatman-180798736007507/',
-  },
-  {
-    text: 'Live music from',
-    linkText: 'Woo Town',
-    href: 'https://www.facebook.com/WooTownHillbillies',
-  },
-  {
-    text: 'Interactive theatre with',
-    linkText: 'Worcester Theatremakers',
-    href: 'http://www.worcestertheatremakers.co.uk/',
-  },
-  {
-    text: 'Specially written performance from Commandery Poet in Residence',
-    linkText: 'Leena Batchelor',
-    href: 'https://www.instagram.com/pixiemusepoetry/?hl=en',
-  },
-  {
-    text: 'Fun dog show run by vets',
-    linkText: 'MacArthur Barstow & Gibbs',
-    href: 'https://mbgvet.com/',
-  },
-  { text: 'Have-a-go dog agility run by local dog walkers Al and Cath' },
-  {
-    text: 'Pop-up museum by',
-    linkText: 'Royal Porcelain Works',
-    href: 'https://www.royalporcelainworks.co.uk/',
-  },
-  {
-    text: 'Have-a-go family sports and games run by',
-    linkText: 'Active Communities Worcester',
-    href: 'https://www.freedom-leisure.co.uk/centres/active-communities/worcester/',
-  },
-  {
-    text: 'BBQ by',
-    linkText: 'Café Afloat',
-    href: 'https://www.facebook.com/Cafe-Afloat-265418490330744/',
-  },
-  { linkText: 'Digital community history tour', path: '/memories' },
-  {
-    text: 'Train rides by',
-    linkText: 'Worcester and District Model Engineers',
-    href: 'https://www.facebook.com/worcestermes/',
-  },
-  {
-    text: 'Virtual community hub by',
-    linkText: 'Diglis Hub',
-    href: 'https://www.diglishub.co.uk',
-  },
-  {
-    text: 'Nature walks by',
-    linkText: 'Worcestershire Environmental Group',
-    href: 'https://www.theweg.org.uk/',
-  },
-  {
-    text: 'Boat dressing and flotilla by the community at',
-    linkText: 'Diglis Waterside & Marina',
-    href: 'https://www.aquavista.com/find-a-marina/diglis-waterside-marina',
-  },
-].sort(() => (Math.round(Math.random()) ? -1 : 1));
-
-const globalStyles = (
-  <GlobalStyles
-    styles={{
-      'body, #__next': {
-        minHeight: '100%',
-      },
-    }}
-  />
-);
 
 const Home = () => {
   const [sections, setSections] = useState([0]);
@@ -216,8 +131,8 @@ const Home = () => {
                 What&apos;s on
               </Typography>
               <Typography variant="h6" paragraph>
-                The range of arts and activities we&apos;ll host is growing each
-                week. Here&apos;s what we have confirmed so far:
+                The list of arts and activities we&apos;re hosting is growing
+                week by week. Here&apos;s what we have confirmed so far:
               </Typography>
             </>
           }
@@ -232,7 +147,7 @@ const Home = () => {
           keyId="building"
           sx={{ minHeight: '100vh' }}
           innerSx={{
-            height: '100vh',
+            minHeight: '100vh',
             '> div': {
               display: 'grid',
               gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
@@ -240,36 +155,7 @@ const Home = () => {
           }}
           bodyVariant="h6"
           bodySx={{ background: 'transparent' }}
-          body={
-            <NoSsr>
-              {activities.map(({ text = '', linkText = '', href, path }, i) => (
-                <Typography
-                  component="span"
-                  variant="inherit"
-                  key={`${text || linkText}-${i}`}
-                  sx={{
-                    color: ['primary.light', 'secondary.light'][i % 2],
-                    mr: 1,
-                    fontWeight: 700,
-                  }}
-                >
-                  {text}
-                  {linkText ? ' ' : ''}
-                  {!!linkText && (
-                    <Link
-                      href={href || path}
-                      sx={{ color: 'inherit' }}
-                      external={!!href}
-                      shallow={!!path}
-                      target={href ? '_blank' : null}
-                    >
-                      {linkText}
-                    </Link>
-                  )}{' '}
-                </Typography>
-              ))}
-            </NoSsr>
-          }
+          body={<Activities />}
         />
 
         <Section
@@ -326,19 +212,17 @@ const Home = () => {
                   </Typography>
                   <Typography variant="body1" paragraph>
                     Our digital history project aims to record the
-                    community&apos;s favourite memories of Diglis and present
-                    them on the day as a digital tour guide. If you have any
-                    memories you&apos;d like to submit, please send them to us.
+                    community&apos;s memories of Diglis, both written and
+                    spoken, and we need your help to make this happen!
                   </Typography>
                   <Link
                     component={Button}
-                    href="mailto:memories@diglisjubilee.co.uk"
-                    external
+                    href="/memories"
                     variant="contained"
                     color="primary"
                     size="large"
                   >
-                    Send us memories
+                    Find out more
                   </Link>
                 </Box>
               </Box>

@@ -13,7 +13,7 @@ const defaultTheme = {
   },
   typography: {
     fontFamily: `'Merriweather Sans', sans-serif`,
-    fontWeight: 400,
+    fontWeight: 300,
   },
 };
 
@@ -32,7 +32,7 @@ const darkThemeDefaults = {
   },
   typography: {
     fontFamily: `'Merriweather Sans', sans-serif`,
-    fontWeight: 400,
+    fontWeight: 300,
   },
 };
 

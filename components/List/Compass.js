@@ -15,10 +15,9 @@ const Compass = ({
   onMouseLeave,
 }) => {
   return (
-    <Grid item sx={sx}>
+    <Grid item sx={sx} data-help="navigation">
       <Grid
         component={onClick ? ButtonBase : 'div'}
-        disabled={!distance}
         {...(onClick
           ? {
               onClick,
@@ -32,7 +31,7 @@ const Compass = ({
       >
         <Navigation
           sx={{
-            color: distance ? 'text.secondary' : 'text.disabled',
+            color: 'text.secondary',
             fontSize: size === 'small' ? 24 : 32,
             transform: `rotate(${bearing}deg)`,
           }}

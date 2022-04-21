@@ -26,6 +26,7 @@ const initialState = {
     status: {},
     update: null,
     updateOpen: false,
+    audioLocked: false,
   },
   geolocation: {
     latlng: null,
@@ -44,11 +45,16 @@ const initialState = {
     denied: false,
     ignoreLocation: false,
   },
+  onboarding: {
+    step: 0,
+    show: false,
+  },
   playback: {
     track: null,
     mode: 'closest',
     muted: false,
     playing: false,
+    repeatOpen: false,
   },
 };
 
@@ -120,6 +126,8 @@ const reducers = combineReducers({
         };
       case 'setDisplayMode':
         return { ...state, mode: payload };
+      case 'setAudioLocked':
+        return { ...state, audioLocked: payload };
       default:
         return state;
     }
@@ -128,6 +136,7 @@ const reducers = combineReducers({
   geolocation: (state = initialState.geolocation, { type, payload }) => {
     switch (type) {
       case 'setGeolocation':
+        if (state.manual && !payload.manual) return state;
         return {
           ...state,
           ...payload,
@@ -183,7 +192,7 @@ const reducers = combineReducers({
         return {
           ...state,
           detailsOpen: false,
-          mode: 'track',
+          // mode: 'track',
         };
       case 'openNearby':
         return {
@@ -200,6 +209,8 @@ const reducers = combineReducers({
         return {
           ...state,
           mode: payload,
+          detailsOpen: false,
+          nearby: false,
         };
       case 'openDetails':
         return {
@@ -238,6 +249,17 @@ const reducers = combineReducers({
     }
   },
 
+  onboarding: (state = initialState.onboarding, { type, payload }) => {
+    switch (type) {
+      case 'openOnboarding':
+        return { ...state, show: true, step: payload };
+      case 'closeOnboarding':
+        return { ...state, show: false };
+      default:
+        return state;
+    }
+  },
+
   playback: (state = initialState.playback, { type, payload }) => {
     switch (type) {
       case 'setPlaying':
@@ -249,17 +271,28 @@ const reducers = combineReducers({
         return {
           ...state,
           track: payload,
-          playing: true,
+          playing: !!payload,
         };
       case 'setPlaybackMode':
         return {
           ...state,
           mode: payload,
+          repeatOpen: false,
         };
       case 'setCurrentTime':
         return {
           ...state,
           currentTime: payload,
+        };
+      case 'openRepeatMenu':
+        return {
+          ...state,
+          repeatOpen: true,
+        };
+      case 'closeRepeatMenu':
+        return {
+          ...state,
+          repeatOpen: false,
         };
       case 'toggleMute':
         return {

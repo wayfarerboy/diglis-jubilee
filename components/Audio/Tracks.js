@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { arrayOf } from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 
+import { triggerDistance } from '../../helpers/geolocation';
 import { dataItem } from '../../helpers/propTypes';
 import usePlaylist from '../../hooks/usePlaylist';
 import Track from './Track';
@@ -77,15 +78,26 @@ const Tracks = ({ data }) => {
 
   useEffect(() => {
     if (track && !active.includes(track)) {
-      if (mode === 'moving') {
-        setActive(
-          [...active, track].filter((id, i, arr) => arr.indexOf(id) === i),
-        );
-      } else {
-        setActive([track]);
+      setActive([track]);
+    } else if (!track && active.length) {
+      setActive([]);
+    }
+  }, [active, track, setActive]);
+
+  useEffect(() => {
+    if (mode === 'moving') {
+      const nearby = data.filter(
+        ({ distanceValue }) => distanceValue <= triggerDistance,
+      );
+      if ((!track && nearby[0]?.id) || (track && track !== nearby[0]?.id)) {
+        if (nearby[0]?.id) {
+          dispatch({ type: 'playTrack', payload: nearby[0]?.id });
+        } else {
+          dispatch({ type: 'playTrack', payload: null });
+        }
       }
     }
-  }, [mode, active, track, setActive]);
+  }, [data, mode, track]);
 
   if (!data.length || !data[0]?.audio) return null;
 

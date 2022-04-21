@@ -5,6 +5,7 @@ import Leaflet from 'leaflet';
 const rotateRegExp = /[\d.]+deg/g;
 
 const useLocate = ({
+  maximumAge = 0,
   enableHighAccuracy = true,
   position = 'topleft',
   map: _map,
@@ -35,21 +36,31 @@ const useLocate = ({
     if (!inited) {
       const locate = Leaflet.control
         .locate({
-          setView: false,
-          enableHighAccuracy,
           position,
           onLocationOutsideMapBounds,
           onLocationError,
+          locateOptions: {
+            setView: false,
+            enableHighAccuracy,
+            maximumAge,
+          },
         })
         .addTo(map);
       locate.start();
-      map.addEventListener('locationfound', ({ latlng, heading = 0 }) => {
-        dispatch({
-          type: 'setGeolocation',
-          payload: { latlng: { lat: latlng.lat, lng: latlng.lng }, heading },
-        });
-        onLocation?.(latlng);
-      });
+      map.addEventListener(
+        'locationfound',
+        ({ latlng, heading = 0, accuracy }) => {
+          dispatch({
+            type: 'setGeolocation',
+            payload: {
+              latlng: { lat: latlng.lat, lng: latlng.lng },
+              heading,
+              accuracy,
+            },
+          });
+          onLocation?.(latlng);
+        },
+      );
     }
   }, [map, setInited, inited]);
 

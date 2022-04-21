@@ -28,8 +28,10 @@ const Seeker = ({ sx = {}, audio }) => {
   const onChange = (_, val) => setSliderTime(val);
 
   const onChangeCommitted = (_, val) => {
-    audio.seek(val);
-    setSliderTime(-1);
+    if (audio) {
+      audio.seek(val);
+      setSliderTime(-1);
+    }
   };
 
   let marks = defaultMarks;

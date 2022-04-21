@@ -12,7 +12,7 @@ import 'leaflet.offline';
 
 const Wrapper = ({ sx, header, footer, ...props }) => {
   return (
-    <Box sx={sx}>
+    <Box sx={sx} data-help="map">
       {header}
       <MapContainer {...props} />
       {footer}

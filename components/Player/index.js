@@ -16,6 +16,7 @@ const Player = ({ onView, data = [], sx = {} }) => {
 
   const mode = useSelector(({ map }) => map.mode);
   const detailsOpen = useSelector(({ map }) => map.detailsOpen);
+  const nearby = useSelector(({ map }) => map.nearby);
   const dense = useSelector(({ map, app }) => !!app.drawer || map.detailsOpen);
   const playId = useSelector(({ playback }) => playback.track);
   const playing = useSelector(({ playback }) => playback.playing);
@@ -56,7 +57,13 @@ const Player = ({ onView, data = [], sx = {} }) => {
   };
 
   return (
-    <Box sx={sx}>
+    <Box
+      sx={{
+        ...sx,
+        zIndex: mode === 'track' || detailsOpen || nearby ? 'tooltip' : 0,
+      }}
+      data-help="player"
+    >
       <Collapse in={!dense}>
         <Box
           sx={{
@@ -85,7 +92,7 @@ const Player = ({ onView, data = [], sx = {} }) => {
           {...item}
         />
       </List>
-      {!dense && <Seeker audio={audio} sx={{ mb: 1, mx: 4 }} />}
+      {!dense && <Seeker key={item?.id} audio={audio} sx={{ mb: 1, mx: 4 }} />}
       {!dense && <Controls sx={{ mx: 4 }} {...controls} />}
     </Box>
   );

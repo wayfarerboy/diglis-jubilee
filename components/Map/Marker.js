@@ -8,18 +8,23 @@ import useMarkerIcons from '../../hooks/useMarkerIcons';
 const Component = ({ item }) => {
   const marker = useRef(null);
   const dispatch = useDispatch();
-  const selected = useSelector(({ map }) => map.details?.docId);
+  const track = useSelector(({ playback }) => playback.track);
+  const detailsOpen = useSelector(({ map }) => map.details?.docId === item?.id);
   const labelOpen = useSelector(({ map }) => map.label === item.id);
-  const [icon, selectedIcon] = useMarkerIcons(item.id);
+  const [icon, selectedIcon, playingIcon] = useMarkerIcons(item.id);
 
   const onSelect =
     ({ title, description, image, id: docId }) =>
     () => {
-      dispatch({ type: 'setAppDrawer', payload: null });
-      dispatch({
-        type: 'openDetails',
-        payload: { title, description, image, docId },
-      });
+      if (detailsOpen) {
+        dispatch({ type: 'closeDetails' });
+      } else {
+        dispatch({ type: 'setAppDrawer', payload: null });
+        dispatch({
+          type: 'openDetails',
+          payload: { title, description, image, docId },
+        });
+      }
     };
 
   useEffect(() => {
@@ -34,7 +39,7 @@ const Component = ({ item }) => {
       position={item.latlng}
       key={item.id}
       eventHandlers={{ click: onSelect(item) }}
-      icon={item.id === selected ? selectedIcon : icon}
+      icon={item.id === track ? playingIcon : detailsOpen ? selectedIcon : icon}
       docId={item.id}
     >
       <Tooltip>{item.title}</Tooltip>

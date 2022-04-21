@@ -1,3 +1,5 @@
+export const triggerDistance = 100;
+
 export const humanDistance = (distInMetres = 0) => {
   if (distInMetres) {
     const value = Math.round(distInMetres);

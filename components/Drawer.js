@@ -49,6 +49,7 @@ const Drawer = ({ onView, map, data, sx }) => {
                   onClick={onToggle(value)}
                   value={value}
                   label={label}
+                  data-help={value === 'help' ? 'help' : ''}
                 />
               ))}
             </Tabs>

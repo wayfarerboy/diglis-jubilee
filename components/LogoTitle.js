@@ -1,13 +1,13 @@
 import React from 'react';
 import Box from '@mui/material/Box';
-import { bool, any } from 'prop-types';
+import { number, bool, any } from 'prop-types';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import CircularProgress from '@mui/material/CircularProgress';
 
 import Logo from './Logo';
 
-const LogoTitle = ({ progress, children, dark }) => {
+const LogoTitle = ({ spacing = 2, progress, children, dark }) => {
   return (
     <Box
       sx={{
@@ -23,7 +23,7 @@ const LogoTitle = ({ progress, children, dark }) => {
       <Grid
         container
         alignItems="center"
-        spacing={2}
+        spacing={spacing}
         sx={{ mt: 0 }}
         justifyContent="center"
       >
@@ -47,6 +47,7 @@ LogoTitle.propTypes = {
   children: any,
   progress: bool,
   dark: bool,
+  spacing: number,
 };
 
 export default LogoTitle;

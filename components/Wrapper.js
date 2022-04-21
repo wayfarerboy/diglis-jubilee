@@ -11,11 +11,14 @@ import Player from './Player';
 import Drawer from './Drawer';
 import Tracks from './Audio/Tracks';
 import { zoomBounds } from '../helpers/geolocation';
+import useAudioUnlocker from '../helpers/useAudioUnlocker';
+import Onboarding from './Onboarding';
 
 const Wrapper = () => {
   const [map, setMap] = useState();
   const data = useData();
   const dispatch = useDispatch();
+  useAudioUnlocker();
 
   const onView = (id, noClose) => (ev) => {
     ev.stopPropagation();
@@ -74,7 +77,7 @@ const Wrapper = () => {
           sx={{
             display: { xs: 'block', sm: 'none' },
             gridArea: 'switcher',
-            zIndex: { xs: 0, sm: 'tooltip' },
+            zIndex: 'tooltip',
             position: 'relative',
             bgcolor: 'background.paper',
             mt: 8,
@@ -84,7 +87,6 @@ const Wrapper = () => {
           data={data}
           sx={{
             gridArea: 'player',
-            zIndex: { xs: 0, sm: 'tooltip' },
             position: 'relative',
             bgcolor: 'background.paper',
           }}
@@ -94,11 +96,12 @@ const Wrapper = () => {
           sx={{
             gridArea: 'details',
             overflowY: 'auto',
-            zIndex: { xs: 0, sm: 'tooltip' },
+            zIndex: 'tooltip',
             position: 'relative',
             bgcolor: 'background.paper',
           }}
           onView={onView}
+          data={data}
         />
         <Drawer
           onView={onView}
@@ -106,13 +109,14 @@ const Wrapper = () => {
           sx={{
             gridArea: 'nearby',
             display: 'flex',
-            zIndex: { xs: 0, sm: 'tooltip' },
+            zIndex: 'tooltip',
             position: 'relative',
             bgcolor: 'background.paper',
           }}
           map={map}
         />
       </Box>
+      <Onboarding />
     </>
   );
 };

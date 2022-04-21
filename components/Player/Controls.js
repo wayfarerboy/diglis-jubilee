@@ -21,6 +21,7 @@ const Controls = ({ sx, dense, disabled, onPlay, onPause, onPrev, onNext }) => {
         wrap="nowrap"
         alignItems="center"
         justifyContent="center"
+        data-help="controls"
         sx={{
           '& > div': {
             transition: 'all .3s ease-in-out',

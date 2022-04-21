@@ -28,7 +28,11 @@ const Switcher = ({ sx = {} }) => {
             size="small"
             exclusive
             color="primary"
-            sx={{ '.MuiToggleButton-root': { fontSize: 12, py: 0.4, px: 1 } }}
+            sx={{
+              boxShadow: 3,
+              borderRadius: 16,
+              '.MuiToggleButton-root': { fontSize: 12, py: 0.4, px: 1 },
+            }}
           >
             <ToggleButton
               sx={{
@@ -37,7 +41,7 @@ const Switcher = ({ sx = {} }) => {
               }}
               value="track"
             >
-              Track
+              Player
             </ToggleButton>
             <ToggleButton
               sx={{

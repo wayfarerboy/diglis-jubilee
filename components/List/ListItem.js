@@ -16,6 +16,7 @@ import Compass from './Compass';
 import Description from './Description';
 
 const Component = ({
+  className,
   author,
   description,
   onPlay,
@@ -44,6 +45,10 @@ const Component = ({
     dispatch({ type: 'setAppDrawer', payload: null });
     dispatch({ type: 'showPlayer' });
   };
+  const onCompassClick = (ev) => {
+    dispatch({ type: 'closeDetails' });
+    onView(ev);
+  };
   return (
     <ListItem
       onClick={dense ? onShow : onPlay}
@@ -52,11 +57,14 @@ const Component = ({
       onMouseEnter={onPlay ? onEnter : null}
       onMouseLeave={onPlay ? onLeave : null}
       selected={variant === 'list' && isPlaying}
-      id={dense ? 'play-item' : `list-item-${docId}`}
+      className={className}
+      data-help={
+        variant === 'playback' ? (dense ? 'miniplayer' : '') : 'listitem'
+      }
     >
       {!dense && (
         <Compass
-          onClick={onView}
+          onClick={onCompassClick}
           onMouseEnter={onView ? onClearHover : null}
           onMouseLeave={onView ? onEnter : null}
           sx={{ flexBasis: variant === 'list' ? 48 : 54, flexShrink: 0, mr: 1 }}
@@ -108,9 +116,11 @@ const Component = ({
             <TrackTitle
               animation={animation}
               text={
-                title || author || playMode === 'closest'
+                title ||
+                author ||
+                (playMode === 'closest'
                   ? 'No track selected'
-                  : 'No nearby memories'
+                  : 'No nearby memories')
               }
               sx={{ textAlign: 'center' }}
             />
@@ -120,9 +130,10 @@ const Component = ({
           variant === 'list' || dense ? { noWrap: true } : {}
         }
         secondary={
-          author || playMode === 'closest'
+          author ||
+          (playMode === 'closest'
             ? 'Choose one from map or playlist'
-            : 'Head towards a marker on the map'
+            : 'Head towards a marker on the map')
         }
         secondaryTypographyProps={
           variant === 'playback' && !dense
@@ -170,6 +181,7 @@ Component.propTypes = {
   onNext: func,
   onPause: func,
   dense: bool,
+  className: string,
 };
 
 export default Component;

@@ -2,20 +2,23 @@ import React from 'react';
 import { func, object } from 'prop-types';
 import { TileLayer, ZoomControl } from 'react-leaflet';
 import { useSelector } from 'react-redux';
+import { useTheme } from '@mui/material/styles';
 
 import Wrapper from './Wrapper';
 import Bounds from './Bounds';
 import Marker from './Marker';
 import Controls from './Controls';
 import { zoomBounds } from '../../helpers/geolocation';
-import LocateWarning from './LocateWarning';
+import ManualLocation from './ManualLocation';
 
 const Display = ({ data, whenCreated, sx = {} }) => {
+  const theme = useTheme();
   const active = useSelector(
     ({ app, map }) => map.mode === 'map' && !app.drawer && !map.detailsOpen,
   );
   const center = useSelector(({ map }) => map.center);
   const zoom = useSelector(({ map }) => map.zoom);
+
   return (
     <Wrapper
       sx={{
@@ -37,11 +40,35 @@ const Display = ({ data, whenCreated, sx = {} }) => {
           '90%': { mt: `-34px` },
           '100%': { mt: `-32px` },
         },
+        '@keyframes pulse': {
+          '0%': { transform: 'translate(-50%, -50%) scale(0)', opacity: 1 },
+          '100%': { transform: 'translate(-50%, -50%) scale(1)', opacity: 0 },
+        },
         '.leaflet-div-icon': {
           background: 'transparent',
           border: 0,
+          svg: {
+            position: 'relative',
+            zIndex: 1,
+          },
           '&.selected': {
             animation: 'bounce 0.35s ease 1',
+          },
+          '&.playing': {
+            '.pulse': {
+              backgroundImage: `radial-gradient(transparent, ${theme.palette.primary.main})`,
+              borderRadius: '50%',
+              pointerEvents: 'none',
+              animation: 'pulse 2s linear infinite',
+              position: 'absolute',
+              left: 13,
+              top: 36,
+              width: 100,
+              height: 100,
+            },
+          },
+          '.icon-wrapper': {
+            position: 'relative',
           },
         },
       }}
@@ -52,8 +79,8 @@ const Display = ({ data, whenCreated, sx = {} }) => {
       style={{ width: '100%', height: '100%' }}
       zoomControl={false}
       whenCreated={whenCreated}
-      footer={<LocateWarning />}
     >
+      <ManualLocation />
       <Bounds pad={1.5} data={data} />
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

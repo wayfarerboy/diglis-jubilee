@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import AutoAwesome from '@mui/icons-material/AutoAwesome';
 import AutoMode from '@mui/icons-material/AutoMode';
 import IconButton from '@mui/material/IconButton';
@@ -24,41 +24,50 @@ const modes = {
 };
 const modeList = Object.keys(modes).map((id) => ({ id, ...modes[id] }));
 
-const Repeat = ({ disabled, sx, open: _open = false }) => {
+const Repeat = ({ disabled, sx }) => {
+  const buttonRef = useRef(null);
   const dispatch = useDispatch();
-  const [open, setOpen] = useState(_open);
-  const [anchor, setAnchor] = useState();
+  const open = useSelector(({ playback }) => playback.repeatOpen);
   const [access] = useLocalStorage('locationAccess', 'initing');
+  const isManual = useSelector(({ geolocation }) => !!geolocation.manual);
   const playMode = useSelector(({ playback }) => playback.mode);
 
   const onMode = (id) => () => {
     dispatch({ type: 'setPlaybackMode', payload: id });
-    setOpen(false);
   };
 
-  const onOpen = (ev) => {
-    setAnchor(ev.target);
-    setOpen(true);
+  const onOpen = () => {
+    dispatch({ type: 'openRepeatMenu' });
   };
 
-  const onClose = () => setOpen(false);
+  const onClose = () => {
+    dispatch({ type: 'closeRepeatMenu' });
+  };
 
   const RepeatIcon = modes[playMode].Icon;
-  const denied = access === 'denied';
+  const denied = access === 'denied' && !isManual;
 
   return (
     <>
-      <IconButton onClick={onOpen} sx={sx} disabled={disabled || denied}>
+      <IconButton
+        onClick={onOpen}
+        sx={sx}
+        disabled={disabled}
+        data-help="repeat"
+        ref={buttonRef}
+      >
         <RepeatIcon />
       </IconButton>
-      <Menu open={open} onClose={onClose} anchorEl={anchor}>
+      <Menu open={open} onClose={onClose} anchorEl={buttonRef.current}>
         {modeList.map(({ id, label, description, Icon }) => (
           <ListItem
             dense
             onClick={onMode(id)}
             key={id}
+            disabled={id === 'moving' && denied}
             selected={id === playMode}
             button
+            data-help={id}
           >
             <Icon fontSize="small" sx={{ mr: 2 }} />
             <ListItemText primary={label} secondary={description} />
@@ -71,7 +80,6 @@ const Repeat = ({ disabled, sx, open: _open = false }) => {
 
 Repeat.displayName = 'PlayerRepeat';
 Repeat.propTypes = {
-  open: bool,
   sx: object,
   disabled: bool,
 };

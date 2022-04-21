@@ -64,10 +64,16 @@ const Component = ({ onReady }) => {
   const onContinue = (_status) => () => {
     const s = _status || status;
     if (s === 'denied') dispatch({ type: 'setLocationDenied' });
+    const mode = s === 'denied' || outOfBounds ? 'closest' : 'moving';
     dispatch({
       type: 'setPlaybackMode',
-      payload: s === 'denied' || outOfBounds ? 'closest' : 'moving',
+      payload: mode,
     });
+    if (mode === 'moving')
+      dispatch({
+        type: 'setMapMode',
+        payload: 'map',
+      });
     onReady();
   };
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import List from '@mui/material/List';
 import { object } from 'prop-types';
@@ -12,6 +12,7 @@ const scrollOptsSupported =
   'scrollBehavior' in (document?.documentElement.style || {});
 
 const Nearby = ({ data, map, onView }) => {
+  const listRef = useRef(null);
   const [hover, setHover] = useState();
   const width = useWidth();
   const dispatch = useDispatch();
@@ -31,9 +32,11 @@ const Nearby = ({ data, map, onView }) => {
 
   const onEnter = (id) => () => setHover(id);
   const onEntered = () => {
-    if (track) {
-      const ele = document.getElementById(`list-item-${track}`);
-      ele.scrollIntoView(scrollOptsSupported ? { behaviour: 'smooth' } : true);
+    if (track && listRef.current) {
+      const ele = listRef.current.querySelector(`.list-item-${track}`);
+      ele?.scrollIntoView?.(
+        scrollOptsSupported ? { behaviour: 'smooth' } : true,
+      );
     }
   };
   const onLeave = (id) => () => id === hover && setHover(null);
@@ -41,13 +44,14 @@ const Nearby = ({ data, map, onView }) => {
 
   return (
     <Collapse in={active} onEntered={onEntered}>
-      <List>
+      <List ref={listRef} data-help="playlist">
         {data.map((item) => (
           <ListItem
             {...item}
             docId={item.id}
             disabled={!map}
             key={item.id}
+            className={`list-item-${item.id}`}
             variant="list"
             onPlay={exploreMode ? onPlay(item.id) : null}
             onView={onView(item.id, noClose)}
