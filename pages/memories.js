@@ -18,7 +18,7 @@ const Wrapper = dynamic(() => import('../components/Wrapper'), {
 const Home = () => {
   const [ready, setReady] = useState(false);
   const onReady = () => setReady(true);
-  if (true || process.env.VERCEL_ENV === 'production') return <ComingSoon />;
+  if (process.env.VERCEL_ENV === 'production') return <ComingSoon />;
   if (!ready) return <Calibrate onReady={onReady} />;
   return <Wrapper />;
 };
