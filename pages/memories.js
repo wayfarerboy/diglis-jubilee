@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { bool } from 'prop-types';
 import dynamic from 'next/dynamic';
 import Loading from '../components/Loading';
 import ComingSoon from '../components/ComingSoon';
@@ -15,12 +16,23 @@ const Wrapper = dynamic(() => import('../components/Wrapper'), {
 
 // description="Explore Diglis and listen to stories from the last 70 years"
 //
-const Home = () => {
+const Memories = ({ isProduction }) => {
   const [ready, setReady] = useState(false);
   const onReady = () => setReady(true);
-  if (process.env.VERCEL_ENV === 'production') return <ComingSoon />;
+  if (isProduction) return <ComingSoon />;
   if (!ready) return <Calibrate onReady={onReady} />;
   return <Wrapper />;
 };
 
-export default Home;
+Memories.displayName = 'pagesMemories';
+Memories.propTypes = { isProduction: bool };
+
+export async function getStaticProps() {
+  return {
+    props: {
+      isProduction: process.env.VERCEL_ENV === 'production',
+    },
+  };
+}
+
+export default Memories;
