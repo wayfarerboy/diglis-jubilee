@@ -130,6 +130,7 @@ const Section = ({
                 src={image}
                 layout="fill"
                 placeholder="blur"
+                blurDataURL={image}
                 objectFit="cover"
               />
             </Box>

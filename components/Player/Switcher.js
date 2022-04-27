@@ -28,6 +28,7 @@ const Switcher = ({ sx = {} }) => {
             size="small"
             exclusive
             color="primary"
+            data-help="switcher"
             sx={{
               boxShadow: 3,
               borderRadius: 16,

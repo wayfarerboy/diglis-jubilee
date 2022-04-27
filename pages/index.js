@@ -9,9 +9,8 @@ import Link from '../components/Link';
 import Logo from '../components/Logo';
 import AppWrapper from '../components/AppWrapper';
 import Section from '../components/Pages/Section';
-import home from '../assets/home/PXL_20220326_173153326.jpg';
-import involved from '../assets/home/PXL_20211231_083113472.jpg';
-import building from '../assets/home/PXL_20210724_080859055.jpg';
+import home from '../assets/home/20141213_0039.JPG';
+import building from '../assets/home/PXL_20210622_194941803_2-EFFECTS.jpg';
 import { globalStyles } from '../helpers/styles';
 
 // description="Explore Diglis and listen to stories from the last 70 years"
@@ -19,7 +18,6 @@ import { globalStyles } from '../helpers/styles';
 const images = {
   home,
   building,
-  involved,
 };
 
 const Home = () => {

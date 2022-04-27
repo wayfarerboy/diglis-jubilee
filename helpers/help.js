@@ -9,8 +9,14 @@ export const steps = [
           to get the most out of our community history project.`,
   },
   {
+    id: 'switcher',
+    body: 'You can browse and control the currently playing memory from the Player panel, choosing either the MAP or PLAYER display...',
+    anchorOrigin: { horizontal: 'center', vertical: 'bottom' },
+    transformOrigin: { horizontal: 'center', vertical: 'top' },
+  },
+  {
     id: 'map',
-    body: `The map panel shows the location of all of the memories of Diglis.
+    body: `The MAP display shows the location of all of the memories of Diglis.
           You can select a marker to show the details of each memory.`,
     before: [{ type: 'setMapMode', payload: 'map' }],
     anchorOrigin: { horizontal: 'center', vertical: 'bottom' },
@@ -18,14 +24,14 @@ export const steps = [
   },
   {
     id: 'player',
-    body: `The Player panel shows the currently playing memory.`,
+    body: `The PLAYER display shows the currently playing memory.`,
     before: [{ type: 'setMapMode', payload: 'track' }],
     anchorOrigin: { horizontal: 'center', vertical: 'bottom' },
     transformOrigin: { horizontal: 'center', vertical: 'top' },
   },
   {
     id: 'controls',
-    body: `These buttons control playback and toggle between the two playback modes...`,
+    body: `These buttons control playback and toggle between two playback modes...`,
     before: [{ type: 'setMapMode', payload: 'track' }],
     anchorOrigin: { horizontal: 'center', vertical: 'top' },
     transformOrigin: { horizontal: 'center', vertical: 'bottom' },
