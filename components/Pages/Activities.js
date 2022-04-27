@@ -71,21 +71,21 @@ const activities = [
     text: 'Nature walks by local expert Glen Dipple',
   },
   {
-    text: 'Bat and bird box building with',
-    linkText: 'Worcester Environmental Group',
-    href: 'https://www.theweg.org.uk/',
-  },
-  {
     text: 'Boat dressing and flotilla by the community at',
     linkText: 'Diglis Waterside & Marina',
     href: 'https://www.aquavista.com/find-a-marina/diglis-waterside-marina',
   },
   {
     text: 'Information stalls from',
-    linkText: ['Time to Talk', 'Swan Food Project'],
+    linkText: [
+      'Time to Talk',
+      'Swan Food Project',
+      'Worcester Environmental Group',
+    ],
     href: [
       '',
       'https://www.facebook.com/The-Swan-Food-Project-549819075117845/',
+      'https://www.theweg.org.uk/',
     ],
   },
 ].sort(() => (Math.round(Math.random()) ? -1 : 1));
