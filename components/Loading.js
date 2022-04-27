@@ -19,7 +19,7 @@ const Loading = () => {
         color: 'secondary.light',
       }}
     >
-      <LogoTitle progress>Loading</LogoTitle>
+      <LogoTitle progress>Loading...</LogoTitle>
     </Box>
   );
 };
