@@ -25,13 +25,6 @@ const ComingSoon = () => {
         <Container maxWidth="xs" sx={{ pt: 15, color: 'text.primary' }}>
           <LogoTitle spacing={0}>
             <Typography
-              variant="h6"
-              sx={{ color: 'primary.main', marginTop: -2 }}
-              paragraph
-            >
-              Memories
-            </Typography>
-            <Typography
               variant="h5"
               paragraph
               color="secondary"

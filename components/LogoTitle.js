@@ -20,6 +20,16 @@ const LogoTitle = ({ spacing = 2, progress, children, dark }) => {
         height={128}
         sx={{ position: 'relative', left: -4 }}
       />
+      <Typography
+        variant="h6"
+        sx={{
+          color: dark ? 'primary.main' : 'secondary.light',
+          marginTop: -2,
+        }}
+        paragraph
+      >
+        Memories
+      </Typography>
       <Grid
         container
         alignItems="center"

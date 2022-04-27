@@ -9,7 +9,11 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import { bool } from 'prop-types';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 
+import lottery from '../assets/affiliates/lottery.png';
 import Link from './Link';
 import Logo from './Logo';
 
@@ -57,6 +61,16 @@ const Component = ({ dark }) => {
             </ListItem>
           ))}
         </List>
+        <Grid xs item />
+        <Box
+          sx={{
+            textAlign: 'center',
+            filter: dark ? 'invert(1)' : 'none',
+            mixBlendMode: dark ? 'lighten' : 'none',
+          }}
+        >
+          <Image width={240} height={117} src={lottery} />
+        </Box>
       </Drawer>
     </>
   );
