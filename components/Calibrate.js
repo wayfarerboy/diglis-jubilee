@@ -112,12 +112,12 @@ const Component = ({ onReady }) => {
         footer={
           <Container maxWidth="xs">
             {!status && (
-              <LogoTitle dark progress>
+              <LogoTitle dark progress spacing={0}>
                 Loading...
               </LogoTitle>
             )}
             {['initing', 'denied'].includes(status) && (
-              <LogoTitle dark>
+              <LogoTitle dark spacing={0}>
                 <Box sx={{ color: 'text.primary', mt: 2 }}>
                   <Typography variant="body2" paragraph>
                     In order to experience Diglis Jubilee memories as intended,
