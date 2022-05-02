@@ -4,6 +4,8 @@ import Typography from '@mui/material/Typography';
 
 import Link from '../Link';
 
+const byRandom = () => (Math.round(Math.random()) ? -1 : 1);
+
 const activities = [
   {
     text: 'Jubilee-inspired community dance performance by',
@@ -26,12 +28,12 @@ const activities = [
     href: 'https://www.facebook.com/WooTownHillbillies',
   },
   {
-    text: 'Interactive theatre with',
+    text: `Children's drama workshops`,
     linkText: 'Worcester Theatremakers',
     href: 'http://www.worcestertheatremakers.co.uk/',
   },
   {
-    text: 'Specially written performance from Commandery Poet in Residence',
+    text: 'Specially written poem performaed by Commandery Poet in Residence',
     linkText: 'Leena Batchelor',
     href: 'https://www.instagram.com/pixiemusepoetry/?hl=en',
   },
@@ -78,17 +80,24 @@ const activities = [
   {
     text: 'Information stalls from',
     linkText: [
-      'Time to Talk',
+      'Time to Change',
       'Swan Food Project',
       'Worcester Environmental Group',
-    ],
+      'Behind the Smile',
+      'Diglis Hub',
+    ].sort(byRandom),
     href: [
       '',
       'https://www.facebook.com/The-Swan-Food-Project-549819075117845/',
       'https://www.theweg.org.uk/',
     ],
   },
-].sort(() => (Math.round(Math.random()) ? -1 : 1));
+  {
+    text: '',
+    linkText: 'Camarados public living room',
+    href: 'https://www.camerados.org/public-living-room',
+  },
+].sort(byRandom);
 
 const Activities = () => (
   <NoSsr>
