@@ -66,7 +66,7 @@ const Home = () => {
                 external
                 href="https://goo.gl/maps/mWLkpeTU4Xx5CC3s5"
                 target="_blank"
-                variant="outlined"
+                variant="contained"
                 sx={{
                   fontWeight: 700,
                   borderColor: 'secondary.light',
