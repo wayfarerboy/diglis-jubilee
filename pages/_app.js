@@ -1,4 +1,3 @@
-import 'regenerator-runtime/runtime';
 import React from 'react';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from '@mui/material/styles';
