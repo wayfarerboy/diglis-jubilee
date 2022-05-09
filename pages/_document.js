@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import createEmotionServer from '@emotion/server/create-instance';
-import 'regenerator-runtime/runtime';
 
 import { theme } from '../helpers/theme';
 import createEmotionCache from '../helpers/createEmotionCache';

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import 'regenerator-runtime/runtime';
 
 import Activities from '../components/Pages/Activities';
 import Footer from '../components/Pages/Footer';

@@ -34,11 +34,11 @@
     "leaflet.locatecontrol": "^0.76.0",
     "leaflet.offline": "^2.1.0",
     "localforage": "^1.10.0",
-    "next": "^12.1.6",
+    "next": "^12.1.0",
     "next-pwa": "^5.5.0",
-    "react": "^18.1.0",
-    "react-confirm": "^0.2.2",
-    "react-dom": "^18.1.0",
+    "react": "^17.0.2",
+    "react-confirm": "^0.1.16",
+    "react-dom": "^17.0.2",
     "react-howler": "^5.2.0",
     "react-leaflet": "^3.2.5",
     "react-markdown": "^8.0.3",
@@ -75,7 +75,8 @@
     "puppeteer": "^3.3.0",
     "simple-git": "^3.7.1",
     "storybook-addon-next-router": "^3.1.1",
-    "typescript": "^4.6.4"
+    "typescript": "^4.6.4",
+    "webpack": "^5.72.0"
   },
   "prettier": {
     "singleQuote": true,
