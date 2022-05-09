@@ -55,7 +55,7 @@ const ComingSoon = () => {
               size="large"
               color="secondary"
               component={Button}
-              variant="outlined"
+              variant="contained"
               target="_blank"
               fullWidth
               sx={{ whiteSpace: 'nowrap' }}
