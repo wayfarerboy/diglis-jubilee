@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import List from '@mui/material/List';
-import { object } from 'prop-types';
+import { arrayOf, string, shape, object } from 'prop-types';
 import { useDispatch } from 'react-redux';
 import Collapse from '@mui/material/Collapse';
 
@@ -11,7 +11,7 @@ import ListItem from './ListItem';
 const scrollOptsSupported =
   'scrollBehavior' in (document?.documentElement.style || {});
 
-const Nearby = ({ data, map, onView }) => {
+const Nearby = ({ data = [], map, onView }) => {
   const listRef = useRef(null);
   const [hover, setHover] = useState();
   const width = useWidth();
@@ -67,6 +67,10 @@ const Nearby = ({ data, map, onView }) => {
 };
 
 Nearby.displayName = 'ListNearby';
-Nearby.propTypes = { sx: object, map: object };
+Nearby.propTypes = {
+  sx: object,
+  map: object,
+  data: arrayOf(shape({ id: string })),
+};
 
 export default Nearby;

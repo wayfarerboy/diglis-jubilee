@@ -34,7 +34,7 @@ const generateMetadata = (item) => {
   });
 };
 
-const Tracks = ({ data }) => {
+const Tracks = ({ data = [] }) => {
   const dispatch = useDispatch();
   const [active, setActive] = useState([]);
   const muted = useSelector(({ playback }) => playback.muted);

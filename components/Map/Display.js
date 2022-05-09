@@ -11,7 +11,7 @@ import Controls from './Controls';
 import { zoomBounds } from '../../helpers/geolocation';
 import ManualLocation from './ManualLocation';
 
-const Display = ({ data, whenCreated, sx = {} }) => {
+const Display = ({ data = [], whenCreated, sx = {} }) => {
   const theme = useTheme();
   const active = useSelector(
     ({ app, map }) => map.mode === 'map' && !app.drawer && !map.detailsOpen,

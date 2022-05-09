@@ -7,7 +7,7 @@ const useBounds = ({ data, pad, map } = {}) => {
       (bounds, { latlng }) => bounds.extend(latlng),
       Leaflet.latLngBounds(),
     );
-    if (pad) value = value.pad(pad);
+    if (data.length && pad) value = value.pad(pad);
     if (map) map.setMaxBounds(value);
     return value;
   }, [data]);

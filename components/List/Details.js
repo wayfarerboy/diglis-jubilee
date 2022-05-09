@@ -13,7 +13,7 @@ import Fab from '@mui/material/Fab';
 import { dataItem } from '../../helpers/propTypes';
 import Compass from './Compass';
 
-const Details = ({ data, onView, sx = {} }) => {
+const Details = ({ data = [], onView, sx = {} }) => {
   const dispatch = useDispatch();
 
   const exploreMode = useSelector(

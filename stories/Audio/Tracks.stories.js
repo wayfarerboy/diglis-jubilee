@@ -1,5 +1,4 @@
-import React, { createRef } from 'react';
-import { useSelector } from 'react-redux';
+import React from 'react';
 import Tracks from '../../components/Audio/Tracks';
 import { seed } from '../../mocks/faker';
 import generate from '../../mocks/generator';
@@ -14,25 +13,14 @@ const data = generate('data').map((item, i) => ({
 const story = {
   title: 'Audio/Tracks',
   component: Tracks,
-};
-
-const Component = () => {
-  const data = useSelector(({ data }) => data);
-  const audioTracks = data.map(() => createRef(null));
-  return <Tracks audioTracks={audioTracks} />;
+  args: { data },
 };
 
 export const WithDefaults = () => <Tracks />;
-export const WithValues = withReduxState(
-  [{ type: 'setData', payload: data }],
-  Component,
-);
+export const WithValues = Tracks;
 export const WithPlayingTrack = withReduxState(
-  [
-    { type: 'setData', payload: data },
-    { type: 'playTrack', payload: data[0].id },
-  ],
-  Component,
+  [{ type: 'playTrack', payload: data[0].id }],
+  Tracks,
 );
 
 export default story;

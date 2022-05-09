@@ -38,11 +38,11 @@ const Track = ({ src, audioRef, onPlay, onPause, onStop, onError, muted }) => {
   };
 
   useEffect(() => {
-    audioRef.current?.mute(muted);
+    audioRef?.current?.mute(muted);
   }, [muted]);
 
   useEffect(() => {
-    return onInit();
+    if (audioRef?.current) return onInit();
   }, []);
 
   return null;

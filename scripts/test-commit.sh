@@ -57,17 +57,5 @@ else
 fi
 
 echo "$CHANGED_FILES" | grep -qE "(components|helpers|hooks|containers)"
-if [ "$?" -ne 0 ]
-then
-  echo "Extension components unchanged, nothing to copy over"
-  echo
-else
-  npm run extension
-  if [ "$?" -ne 0 ]
-  then
-    exit 1
-  fi
-  echo
-fi
 
 exit 0

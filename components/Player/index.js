@@ -11,7 +11,9 @@ import Seeker from './Seeker';
 import ListItem from '../List/ListItem';
 import Controls from './Controls';
 
-const Player = ({ onView, data = [], sx = {} }) => {
+const noop = () => {};
+
+const Player = ({ onView = noop, data = [], sx = {} }) => {
   const dispatch = useDispatch();
 
   const mode = useSelector(({ map }) => map.mode);

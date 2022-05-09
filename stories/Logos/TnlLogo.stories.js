@@ -1,6 +1,6 @@
 import React from 'react';
 import TnlLogo from '../../components/Logos/TnlLogo';
-import faker, { seed } from '../../mocks/faker';
+import { seed } from '../../mocks/faker';
 
 seed('Logos/TnlLogo');
 
@@ -8,11 +8,11 @@ const story = {
   title: 'Logos/TnlLogo',
   component: TnlLogo,
   args: {
-    title: faker.lorem.title(),
+    sx: { fontSize: 120 },
   },
 };
 
-export const WithDefaults = () => <TnlLogo />;
-export const WithValues = (props) => <TnlLogo {...props} />;
+export const WithDefaults = (props) => <TnlLogo {...props} />;
+export const PrimaryColor = (props) => <TnlLogo {...props} color="primary" />;
 
 export default story;

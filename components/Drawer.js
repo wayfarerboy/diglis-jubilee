@@ -1,6 +1,6 @@
 import React from 'react';
 import Box from '@mui/material/Box';
-import { object } from 'prop-types';
+import { arrayOf, shape, string, object } from 'prop-types';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import Paper from '@mui/material/Paper';
@@ -18,7 +18,7 @@ const tabs = [
   { value: 'help', label: 'Help' },
 ];
 
-const Drawer = ({ onView, map, data, sx }) => {
+const Drawer = ({ onView, map, data = [], sx }) => {
   const dispatch = useDispatch();
   const activeMode = useSelector(({ app }) => app.drawer) || false;
   const onToggle = (mode) => () => {
@@ -71,6 +71,7 @@ const Drawer = ({ onView, map, data, sx }) => {
 Drawer.displayName = 'Drawer';
 Drawer.propTypes = {
   sx: object,
+  data: arrayOf(shape({ id: string })),
 };
 
 export default Drawer;

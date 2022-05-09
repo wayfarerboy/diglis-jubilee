@@ -22,7 +22,7 @@ const globalStyles = (
   />
 );
 
-const ZoomToFit = ({ data, position = 'topleft' }) => {
+const ZoomToFit = ({ data = [], position = 'topleft' }) => {
   const [inited, setInited] = useState(false);
   const bounds = useBounds({ data });
   const map = useMap({ data });

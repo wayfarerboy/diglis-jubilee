@@ -11,12 +11,18 @@ const defaultMarks = [
   { value: 1, label: '1' },
 ];
 
-const Seeker = ({ sx = {}, audio }) => {
+const Seeker = ({
+  sx = {},
+  audio,
+  duration: _duration,
+  currentTime: _currentTime,
+  sliderTiem: _sliderTime,
+}) => {
   const frame = useRef(null);
 
-  const duration = audio?.duration() || 0;
-  const [currentTime, setCurrentTime] = useState(0);
-  const [sliderTime, setSliderTime] = useState(-1);
+  const duration = audio?.duration() || _duration || 0;
+  const [currentTime, setCurrentTime] = useState(_currentTime || 0);
+  const [sliderTime, setSliderTime] = useState(_sliderTime || -1);
 
   const onUpdate = (next) => {
     if (audio) {
@@ -88,9 +94,11 @@ const Seeker = ({ sx = {}, audio }) => {
 
 Seeker.displayName = 'PlayerSeeker';
 Seeker.propTypes = {
-  total: number,
-  current: number,
   sx: object,
+  audio: object,
+  sliderTime: number,
+  currentTime: number,
+  duration: number,
 };
 
 export default Seeker;

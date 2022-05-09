@@ -5,14 +5,15 @@ import faker, { seed } from '../../mocks/faker';
 
 seed('Player/Seeker');
 
-const total = faker.datatype.number({ min: 30, max: 360 });
+const duration = faker.datatype.number({ min: 30, max: 360 });
+const currentTime = faker.datatype.number({ min: 0, max: duration });
 
 const story = {
   title: 'Player/Seeker',
   component: Seeker,
   args: {
-    current: faker.datatype.number({ min: 0, max: total }),
-    total,
+    currentTime,
+    duration,
   },
 };
 
@@ -24,7 +25,7 @@ const Component = (props) => (
 export const WithDefaults = () => <Component />;
 export const WithCurrentTime = (props) => <Component {...props} />;
 export const WithCurrentTimeAtZero = (props) => (
-  <Component {...props} current={0} />
+  <Component {...props} currentTime={0} />
 );
 
 export default story;

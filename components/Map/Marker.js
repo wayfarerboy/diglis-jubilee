@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import useMarkerIcons from '../../hooks/useMarkerIcons';
 
-const Component = ({ item }) => {
+const Component = ({ item = {} }) => {
   const marker = useRef(null);
   const dispatch = useDispatch();
   const track = useSelector(({ playback }) => playback.track);
@@ -32,6 +32,8 @@ const Component = ({ item }) => {
       marker.current[labelOpen ? 'openTooltip' : 'closeTooltip']();
     }
   }, [marker.current, labelOpen]);
+
+  if (!item.id) return null;
 
   return (
     <Marker
