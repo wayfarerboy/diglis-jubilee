@@ -16,7 +16,7 @@ CHANGED_FILES=$(git status -s | grep "^M")
   # echo
 # fi
 
-echo "$CHANGED_FILES" | grep -qE "(components|stories|helpers|hooks|containers)"
+echo "$CHANGED_FILES" | grep -qE "(components|stories|helpers|hooks)"
 if [ "$?" -ne 0 ]
 then
   echo "Components unchanged, skipping test"
@@ -56,6 +56,6 @@ else
   fi
 fi
 
-echo "$CHANGED_FILES" | grep -qE "(components|helpers|hooks|containers)"
+echo "$CHANGED_FILES" | grep -qE "(components|helpers|hooks)"
 
 exit 0

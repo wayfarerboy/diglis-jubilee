@@ -3,14 +3,7 @@ const simpleGit = require('simple-git');
 
 const git = simpleGit();
 
-const includedPaths = [
-  'components',
-  'containers',
-  'content',
-  'helpers',
-  'hooks',
-  'pages',
-];
+const includedPaths = ['components', 'helpers', 'hooks', 'pages'];
 
 const getDependencies = (res, _path, checked = []) =>
   res
