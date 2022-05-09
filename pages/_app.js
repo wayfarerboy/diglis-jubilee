@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Script from 'next/script';
+import 'regenerator-runtime/runtime';
 
 import Cookies from '../components/Cookies';
 import Snackbar from '../components/Snackbar';
