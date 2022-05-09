@@ -53,5 +53,8 @@ export const WithLongTitle = (props) => (
 export const WithLongTitleAsList = (props) => (
   <Component {...props} title={longTitle} variant="list" />
 );
+export const AsPlayed = (props) => (
+  <Component {...props} played variant="list" />
+);
 
 export default story;

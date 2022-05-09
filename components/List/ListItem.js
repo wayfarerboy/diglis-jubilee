@@ -9,6 +9,8 @@ import VolumeUp from '@mui/icons-material/VolumeUp';
 import { useSelector, useDispatch } from 'react-redux';
 import Grid from '@mui/material/Grid';
 import { useTheme } from '@mui/material/styles';
+import Badge from '@mui/material/Badge';
+import Checked from '@mui/icons-material/Check';
 
 import Controls from '../Player/Controls';
 import TrackTitle from './TrackTitle';
@@ -35,6 +37,7 @@ const Component = ({
   dense,
   onPause,
   onNext,
+  played,
 }) => {
   const theme = useTheme();
   const dispatch = useDispatch();
@@ -74,39 +77,46 @@ const Component = ({
         />
       )}
       {(variant === 'list' || dense) && (
-        <Paper
-          sx={{
-            overflow: 'hidden',
-            position: 'relative',
-            width: 36,
-            height: 36,
-            flexBasis: 36,
-            flexShrink: 0,
-            mr: 1,
-            backgroundImage: dense
-              ? `linear-gradient(25deg, ${theme.palette.primary.main} -50%, ${theme.palette.primary.dark} 20%, ${theme.palette.secondary.dark} 90%)`
-              : null,
-            bgcolor: !dense ? 'background.default' : null,
-            color: 'text.secondary',
-            img: {
-              objectFit: 'cover',
-              opacity: !dense && (hover || isPlaying) ? 0.2 : 1,
-            },
-          }}
+        <Badge
+          color="success"
+          sx={{ '.MuiBadge-badge': { p: 0, top: 4, right: 12 } }}
+          badgeContent={<Checked sx={{ fontSize: 14 }} />}
+          invisible={!played}
         >
-          {image && <Image src={image} layout="fill" />}
-          {!dense && (isPlaying || hover) && (
-            <PlaybackIcon
-              size="small"
-              sx={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-              }}
-            />
-          )}
-        </Paper>
+          <Paper
+            sx={{
+              overflow: 'hidden',
+              position: 'relative',
+              width: 36,
+              height: 36,
+              flexBasis: 36,
+              flexShrink: 0,
+              mr: 1,
+              backgroundImage: dense
+                ? `linear-gradient(25deg, ${theme.palette.primary.main} -50%, ${theme.palette.primary.dark} 20%, ${theme.palette.secondary.dark} 90%)`
+                : null,
+              bgcolor: !dense ? 'background.default' : null,
+              color: 'text.secondary',
+              img: {
+                objectFit: 'cover',
+                opacity: !dense && (hover || isPlaying) ? 0.2 : 1,
+              },
+            }}
+          >
+            {image && <Image src={image} layout="fill" />}
+            {!dense && (isPlaying || hover) && (
+              <PlaybackIcon
+                size="small"
+                sx={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                }}
+              />
+            )}
+          </Paper>
+        </Badge>
       )}
       <ListItemText
         primary={
@@ -182,6 +192,7 @@ Component.propTypes = {
   onPause: func,
   dense: bool,
   className: string,
+  played: bool,
 };
 
 export default Component;

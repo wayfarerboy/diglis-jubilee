@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import localforage from 'localforage';
 
-const useLocalStorage = (key, defaultValue) => {
+const useLocalStorage = (key, defaultValue, testValue) => {
   const dispatch = useDispatch();
   const [inited, setInited] = useState(false);
   const item = useSelector(({ localStorage }) => localStorage[key]);
@@ -37,7 +37,7 @@ const useLocalStorage = (key, defaultValue) => {
     }
   }, [inited, setInited]);
 
-  return [item, onSet, onRemove];
+  return [testValue || item, onSet, onRemove];
 };
 
 export default useLocalStorage;
