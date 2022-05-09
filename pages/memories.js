@@ -1,3 +1,4 @@
+import 'regenerator-runtime/runtime';
 import React, { useState } from 'react';
 import { bool } from 'prop-types';
 import dynamic from 'next/dynamic';
