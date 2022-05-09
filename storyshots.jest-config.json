@@ -2,7 +2,8 @@
   "testEnvironment": "jsdom",
   "reporters": ["default", "<rootDir>/storyshots.jest-reporter.js"],
   "moduleNameMapper": {
-    ".+\\.(css|mp4|mp3|png|jpg|svg)$": "identity-obj-proxy"
+    ".+\\.(css|mp4|mp3|png|jpg|svg)$": "identity-obj-proxy",
+    "react-markdown": "<rootDir>/mocks/react-markdown.js"
   },
   "testTimeout": 60000
 }

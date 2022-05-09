@@ -1,11 +1,26 @@
 {
-  "failed": [
-    {
-      "title": "Pages / Activities / With Defaults",
-      "filename": "__image_snapshots__/__diff_output__/storyshots-test-js-storyshots-pages-activities-with-defaults-1-diff.png"
-    }
-  ],
+  "failed": [],
   "succeeded": [
+    {
+      "title": "List / Compass / With Bearing",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-list-compass-with-bearing-1-snap.png"
+    },
+    {
+      "title": "List / Compass / With Location",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-list-compass-with-location-1-snap.png"
+    },
+    {
+      "title": "Logos / TnlLogo / With Values",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-logos-tnl-logo-with-values-1-snap.png"
+    },
+    {
+      "title": "Pages / Activities / With Values",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-pages-activities-with-values-1-snap.png"
+    },
+    {
+      "title": "Player / Switcher / With Values",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-player-switcher-with-values-1-snap.png"
+    },
     {
       "title": "About / With Defaults",
       "filename": "__image_snapshots__/storyshots-test-js-storyshots-about-with-defaults-1-snap.png"
@@ -51,6 +66,22 @@
       "filename": "__image_snapshots__/storyshots-test-js-storyshots-calibrate-with-values-1-snap.png"
     },
     {
+      "title": "ComingSoon / With Defaults",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-coming-soon-with-defaults-1-snap.png"
+    },
+    {
+      "title": "Drawer / About Active",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-drawer-about-active-1-snap.png"
+    },
+    {
+      "title": "Drawer / Help Active",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-drawer-help-active-1-snap.png"
+    },
+    {
+      "title": "Drawer / Nearby Active",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-drawer-nearby-active-1-snap.png"
+    },
+    {
       "title": "Drawer / With Defaults",
       "filename": "__image_snapshots__/storyshots-test-js-storyshots-drawer-with-defaults-1-snap.png"
     },
@@ -67,20 +98,24 @@
       "filename": "__image_snapshots__/storyshots-test-js-storyshots-help-with-values-1-snap.png"
     },
     {
-      "title": "List / Compass / With Bearing",
-      "filename": "__image_snapshots__/storyshots-test-js-storyshots-list-compass-with-bearing-1-snap.png"
+      "title": "List / Compass / As Small",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-list-compass-as-small-1-snap.png"
     },
     {
       "title": "List / Compass / With Defaults",
       "filename": "__image_snapshots__/storyshots-test-js-storyshots-list-compass-with-defaults-1-snap.png"
     },
     {
-      "title": "List / Compass / With Location",
-      "filename": "__image_snapshots__/storyshots-test-js-storyshots-list-compass-with-location-1-snap.png"
+      "title": "List / Compass / With Props",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-list-compass-with-props-1-snap.png"
     },
     {
       "title": "List / Details / With Defaults",
       "filename": "__image_snapshots__/storyshots-test-js-storyshots-list-details-with-defaults-1-snap.png"
+    },
+    {
+      "title": "List / Details / With Details",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-list-details-with-details-1-snap.png"
     },
     {
       "title": "List / Details / With Values",
@@ -159,12 +194,12 @@
       "filename": "__image_snapshots__/storyshots-test-js-storyshots-logo-title-with-values-1-snap.png"
     },
     {
-      "title": "Logos / TnlLogo / With Defaults",
-      "filename": "__image_snapshots__/storyshots-test-js-storyshots-logos-tnl-logo-with-defaults-1-snap.png"
+      "title": "Logos / TnlLogo / Primary Color",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-logos-tnl-logo-primary-color-1-snap.png"
     },
     {
-      "title": "Logos / TnlLogo / With Values",
-      "filename": "__image_snapshots__/storyshots-test-js-storyshots-logos-tnl-logo-with-values-1-snap.png"
+      "title": "Logos / TnlLogo / With Defaults",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-logos-tnl-logo-with-defaults-1-snap.png"
     },
     {
       "title": "Map / Bounds / With Defaults",
@@ -177,6 +212,22 @@
     {
       "title": "Map / Bounds / With Values",
       "filename": "__image_snapshots__/storyshots-test-js-storyshots-map-bounds-with-values-1-snap.png"
+    },
+    {
+      "title": "Map / Controls / With Alternative Position",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-map-controls-with-alternative-position-1-snap.png"
+    },
+    {
+      "title": "Map / Controls / With Defaults",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-map-controls-with-defaults-1-snap.png"
+    },
+    {
+      "title": "Map / Display / With Data",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-map-display-with-data-1-snap.png"
+    },
+    {
+      "title": "Map / Display / With Defaults",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-map-display-with-defaults-1-snap.png"
     },
     {
       "title": "Map / Locate / To Bottom Right",
@@ -211,6 +262,14 @@
       "filename": "__image_snapshots__/storyshots-test-js-storyshots-map-wrapper-with-values-1-snap.png"
     },
     {
+      "title": "Map / ZoomToFit / In Bottom Right",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-map-zoom-to-fit-in-bottom-right-1-snap.png"
+    },
+    {
+      "title": "Map / ZoomToFit / With Defaults",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-map-zoom-to-fit-with-defaults-1-snap.png"
+    },
+    {
       "title": "Menu / With Defaults",
       "filename": "__image_snapshots__/storyshots-test-js-storyshots-menu-with-defaults-1-snap.png"
     },
@@ -235,8 +294,8 @@
       "filename": "__image_snapshots__/storyshots-test-js-storyshots-onboarding-index-with-values-1-snap.png"
     },
     {
-      "title": "Pages / Activities / With Values",
-      "filename": "__image_snapshots__/storyshots-test-js-storyshots-pages-activities-with-values-1-snap.png"
+      "title": "Pages / Activities / With Defaults",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-pages-activities-with-defaults-1-snap.png"
     },
     {
       "title": "Pages / Footer / With Defaults",
@@ -245,6 +304,14 @@
     {
       "title": "Pages / Footer / With Values",
       "filename": "__image_snapshots__/storyshots-test-js-storyshots-pages-footer-with-values-1-snap.png"
+    },
+    {
+      "title": "Pages / Privacy / With Defaults",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-pages-privacy-with-defaults-1-snap.png"
+    },
+    {
+      "title": "Pages / Privacy / With Values",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-pages-privacy-with-values-1-snap.png"
     },
     {
       "title": "Pages / Section / With Defaults",
@@ -307,12 +374,20 @@
       "filename": "__image_snapshots__/storyshots-test-js-storyshots-list-description-with-values-open-1-snap.png"
     },
     {
+      "title": "Player / Repeat / Open",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-player-repeat-open-1-snap.png"
+    },
+    {
       "title": "Player / Repeat / With Defaults",
       "filename": "__image_snapshots__/storyshots-test-js-storyshots-player-repeat-with-defaults-1-snap.png"
     },
     {
       "title": "Player / Repeat / With Disabled",
       "filename": "__image_snapshots__/storyshots-test-js-storyshots-player-repeat-with-disabled-1-snap.png"
+    },
+    {
+      "title": "Player / Repeat / With Moving Mode",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-player-repeat-with-moving-mode-1-snap.png"
     },
     {
       "title": "Player / Repeat / With Values",
@@ -335,8 +410,8 @@
       "filename": "__image_snapshots__/storyshots-test-js-storyshots-player-switcher-with-defaults-1-snap.png"
     },
     {
-      "title": "Player / Switcher / With Values",
-      "filename": "__image_snapshots__/storyshots-test-js-storyshots-player-switcher-with-values-1-snap.png"
+      "title": "Player / Switcher / With Map Mode",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-player-switcher-with-map-mode-1-snap.png"
     },
     {
       "title": "Player / Volume / With Disabled",
@@ -409,6 +484,14 @@
     {
       "title": "Snackbar / Warning Message",
       "filename": "__image_snapshots__/storyshots-test-js-storyshots-snackbar-warning-message-1-snap.png"
+    },
+    {
+      "title": "Wrapper / With Defaults",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-wrapper-with-defaults-1-snap.png"
+    },
+    {
+      "title": "Wrapper / With Values",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-wrapper-with-values-1-snap.png"
     }
   ],
   "missing": []
