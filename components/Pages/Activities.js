@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import NoSsr from '@mui/material/NoSsr';
+import { bool } from 'prop-types';
 import Typography from '@mui/material/Typography';
 
 import Link from '../Link';
 
 const byRandom = () => (Math.round(Math.random()) ? -1 : 1);
 
-const activities = [
+const _activities = [
   {
     text: 'Jubilee-inspired community dance performance by',
     linkText: 'Dancefest',
@@ -97,57 +98,64 @@ const activities = [
     linkText: 'Camarados public living room',
     href: 'https://www.camerados.org/public-living-room',
   },
-].sort(byRandom);
+];
 
-const Activities = () => (
-  <NoSsr>
-    {activities.map(({ text = '', linkText = '', href, path }, i) => (
-      <Typography
-        component="span"
-        variant="inherit"
-        key={`${text || linkText}-${i}`}
-        sx={{
-          color: ['primary.light', 'secondary.light'][i % 2],
-          mr: 1,
-          fontWeight: 700,
-        }}
-      >
-        {text}
-        {linkText ? ' ' : ''}
-        {typeof linkText === 'string' && (
-          <Link
-            href={href || path}
-            sx={{ color: 'inherit' }}
-            external={!!href}
-            shallow={!!path}
-            target={href ? '_blank' : null}
-          >
-            {linkText}
-          </Link>
-        )}
-        {typeof linkText === 'object' &&
-          linkText.map((text, i) => (
-            <React.Fragment key={`${text}-${i}`}>
-              <Link
-                href={href[i]}
-                sx={{ color: 'inherit' }}
-                external
-                target="_blank"
-              >
-                {text}
-              </Link>
-              {i === linkText.length - 2
-                ? ' and '
-                : i < linkText.length - 1
-                ? ', '
-                : ''}
-            </React.Fragment>
-          ))}{' '}
-      </Typography>
-    ))}
-  </NoSsr>
-);
+const Activities = ({ noRandom }) => {
+  const activities = useMemo(
+    () => (noRandom ? _activities : _activities.sort(byRandom)),
+    [],
+  );
+  return (
+    <NoSsr>
+      {activities.map(({ text = '', linkText = '', href, path }, i) => (
+        <Typography
+          component="span"
+          variant="inherit"
+          key={`${text || linkText}-${i}`}
+          sx={{
+            color: ['primary.light', 'secondary.light'][i % 2],
+            mr: 1,
+            fontWeight: 700,
+          }}
+        >
+          {text}
+          {linkText ? ' ' : ''}
+          {typeof linkText === 'string' && (
+            <Link
+              href={href || path}
+              sx={{ color: 'inherit' }}
+              external={!!href}
+              shallow={!!path}
+              target={href ? '_blank' : null}
+            >
+              {linkText}
+            </Link>
+          )}
+          {typeof linkText === 'object' &&
+            linkText.map((text, i) => (
+              <React.Fragment key={`${text}-${i}`}>
+                <Link
+                  href={href[i]}
+                  sx={{ color: 'inherit' }}
+                  external
+                  target="_blank"
+                >
+                  {text}
+                </Link>
+                {i === linkText.length - 2
+                  ? ' and '
+                  : i < linkText.length - 1
+                  ? ', '
+                  : ''}
+              </React.Fragment>
+            ))}{' '}
+        </Typography>
+      ))}
+    </NoSsr>
+  );
+};
 
 Activities.displayName = 'PagesActivities';
+Activities.propTypes = { noRandom: bool };
 
 export default Activities;

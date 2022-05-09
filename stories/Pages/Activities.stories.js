@@ -1,18 +1,14 @@
 import React from 'react';
 import Activities from '../../components/Pages/Activities';
-import faker, { seed } from '../../mocks/faker';
-
-seed('Pages/Activities');
 
 const story = {
   title: 'Pages/Activities',
   component: Activities,
   args: {
-    title: faker.lorem.title(),
+    noRandom: true,
   },
 };
 
-export const WithDefaults = () => <Activities />;
-export const WithValues = (props) => <Activities {...props} />;
+export const WithDefaults = (props) => <Activities {...props} />;
 
 export default story;

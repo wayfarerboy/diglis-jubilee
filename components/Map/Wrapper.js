@@ -8,7 +8,7 @@ import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import 'leaflet-defaulticon-compatibility';
 import 'leaflet.locatecontrol';
 import 'leaflet.locatecontrol/dist/L.Control.Locate.css';
-import 'leaflet.offline';
+// import 'leaflet.offline';
 
 const Wrapper = ({ sx, header, footer, ...props }) => {
   return (

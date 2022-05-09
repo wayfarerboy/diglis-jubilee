@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Storyshots test results</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    <style>
+      html, body {
+        margin: 0;
+      }
+      body {
+        font-family: Roboto, sans-serif;
+      }
+      .section {
+        line-height: 0;
+      }
+      .section .items {
+        height: 0;
+        overflow-y: hidden;
+      }
+      .section.active .items {
+        height: auto;
+        overflow-y: auto;
+      }
+      h2 {
+        font-weight: 300;
+        display: flex;
+        align-items: center;
+        margin: 0;
+        padding: 16px;
+      }
+      h2 span {
+        transition: transform .3s ease-in-out;
+        transform: rotate(-90deg) ;
+      }
+      h2:hover {
+        background: rgb(230, 230, 230);
+        cursor: pointer;
+      }
+      .section.active h2 span {
+        transform: rotate(0deg) ;
+      }
+      h3 {
+        font-weight: 300;
+        margin: 0;
+        padding: 16px;
+        background: rgba(0,0,0,0.89);
+        color: rgba(255,255,255,0.89);
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+      }
+      .section.succeeded .items {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+      }
+      .section.failed .item {
+        margin: 8px 0;
+      }
+      .section.failed .item img {
+        width: 100%;
+      }
+      .section.missing .item img {
+        display: none;
+      }
+      .section.missing .item h3 span,
+      .section.succeeded .item h3 span {
+        display: none;
+      }
+      .section.succeeded .item h3 {
+        font-size: 11px;
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        margin: 8px 8px 0;
+      }
+      .section.succeeded .item img {
+        aspect-ratio: 4 / 3;
+        display: block;
+        object-fit: cover;
+        object-position: top center;
+        cursor: pointer;
+        margin: 0 8px 8px 8px;
+        width: 320px;
+      }
+      .section.succeeded .item.zoom {
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        overflow-y: auto;
+        backdrop-filter: blur(10px);
+        height: 100%;
+        background: rgba(255,255,255,0.56);
+      }
+      .section.succeeded .item.zoom h3 {
+        margin: 0;
+      }
+      .section.succeeded .item.zoom img {
+        max-width: 800px;
+        width: 100%;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+  {{#sections}}
+  <div class="section {{sectionId}}">
+    <h2>
+      <span class="material-icons">
+        expand_more
+      </span>
+    {{sectionTitle}}</h2>
+    <div class="items">
+    {{#items}}
+      <div class="item">
+        <h3>
+          <span class="material-icons">
+            expand_more
+          </span>
+          {{itemTitle}}
+        </h3>
+        <img src="./{{{filename}}}?v={{timestamp}}" loading="lazy" />
+      </div>
+    {{/items}}
+    </div>
+  </div>
+  {{/sections}}
+  <script type="text/javascript">
+    const url = new URL(window.location);
+    const section = url.searchParams.get('section');
+    if (section) {
+      section.split(',').forEach(_section => {
+        const ele = document.querySelector(`.section.${_section}`);
+        if (ele) ele.classList.toggle('active');
+      });
+    }
+    const sections = ['failed', 'missing', 'succeeded'];
+    const applyToUrl = () => {
+      const url = new URL(window.location);
+      const value = Array.from(document.querySelectorAll('.section.active')).map(ele => sections.find(_id => ele.className.includes(_id))).join(',');
+      url.searchParams.set('section', value || '');
+      window.history.pushState({}, '', url);
+    };
+    document.querySelectorAll('.section h2').forEach(ele => {
+      ele.onclick = () => {
+        ele.parentNode.classList.toggle('active');
+        applyToUrl();
+      };
+    });
+    document.querySelectorAll('.section.succeeded .item img').forEach(ele => {
+      ele.onclick = () => ele.parentNode.classList.toggle('zoom');
+    });
+    document.addEventListener('keydown', (e) => {
+      const arrowKeys = ['ArrowLeft', 'ArrowRight'];
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.section.succeeded .item.zoom').forEach(ele => {
+          ele.classList.toggle('zoom');
+        });
+      } else if (arrowKeys.includes(e.key)) {
+        const index = arrowKeys.indexOf(e.key);
+        const ele = document.querySelector('.section.succeeded .item.zoom');
+        if (ele) {
+          const sibling = ele[index ? 'nextElementSibling' : 'previousElementSibling'];
+          if (sibling) {
+            sibling.classList.toggle('zoom');
+            ele.classList.toggle('zoom');
+          }
+        }
+      }
+    });
+  </script>
+  </body>
+</html>
