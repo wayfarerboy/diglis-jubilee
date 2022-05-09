@@ -1,4 +1,5 @@
 import React from 'react';
+import 'regenerator-runtime/runtime';
 
 import Privacy from '../components/Pages/Privacy';
 

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { bool } from 'prop-types';
 import dynamic from 'next/dynamic';
+import 'regenerator-runtime/runtime';
+
 import Loading from '../components/Loading';
 import ComingSoon from '../components/ComingSoon';
 
