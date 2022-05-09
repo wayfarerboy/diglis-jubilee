@@ -15,6 +15,7 @@
     "storybook": "start-storybook -p 6006",
     "storyshots": "jest storyshots --verbose --config=./storyshots.jest-config.json",
     "test": "jest",
+    "test-commit": "sh ./scripts/test-commit.sh",
     "test-results": "npx http-server ./__tests__"
   },
   "dependencies": {
@@ -63,6 +64,7 @@
     "eslint-config-next": "12.1.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-storybook": "^0.5.11",
+    "husky": "^8.0.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^28.1.0",
     "jest-environment-jsdom": "^28.1.0",
