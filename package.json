@@ -61,6 +61,7 @@
     "@storybook/testing-library": "^0.0.11",
     "babel-jest": "^28.1.0",
     "babel-loader": "^8.2.4",
+    "babel-plugin-transform-dynamic-import": "^2.1.0",
     "eslint": "8.10.0",
     "eslint-config-next": "12.1.0",
     "eslint-config-prettier": "^8.5.0",
