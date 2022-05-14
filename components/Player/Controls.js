@@ -6,13 +6,22 @@ import SkipNext from '@mui/icons-material/SkipNext';
 import SkipPrevious from '@mui/icons-material/SkipPrevious';
 import Pause from '@mui/icons-material/Pause';
 import PlayArrow from '@mui/icons-material/PlayArrow';
-import { bool, func } from 'prop-types';
+import { string, bool, func } from 'prop-types';
 import { useSelector } from 'react-redux';
 
 import Volume from './Volume';
 import Repeat from './Repeat';
 
-const Controls = ({ sx, dense, disabled, onPlay, onPause, onPrev, onNext }) => {
+const Controls = ({
+  variant,
+  sx,
+  dense,
+  disabled,
+  onPlay,
+  onPause,
+  onPrev,
+  onNext,
+}) => {
   const active = useSelector(({ playback }) => playback.mode === 'closest');
   return (
     <Box sx={sx}>
@@ -33,7 +42,7 @@ const Controls = ({ sx, dense, disabled, onPlay, onPause, onPrev, onNext }) => {
           },
         }}
       >
-        {!dense && (
+        {!dense && variant !== 'intro' && (
           <Grid
             item
             sx={{
@@ -43,7 +52,7 @@ const Controls = ({ sx, dense, disabled, onPlay, onPause, onPrev, onNext }) => {
             <Volume sx={{ mr: 1 }} disabled={disabled} />
           </Grid>
         )}
-        {!dense && (
+        {!dense && variant !== 'intro' && (
           <Grid item className="skip">
             <IconButton
               disabled={disabled || !onPrev}
@@ -71,7 +80,7 @@ const Controls = ({ sx, dense, disabled, onPlay, onPause, onPrev, onNext }) => {
             )}
           </IconButton>
         </Grid>
-        {(active || !dense) && (
+        {(active || !dense) && variant !== 'intro' && (
           <Grid item className="skip">
             <IconButton
               disabled={disabled || !onNext}
@@ -82,7 +91,7 @@ const Controls = ({ sx, dense, disabled, onPlay, onPause, onPrev, onNext }) => {
             </IconButton>
           </Grid>
         )}
-        {!dense && (
+        {!dense && variant !== 'intro' && (
           <Grid
             item
             sx={{
@@ -105,6 +114,7 @@ Controls.propTypes = {
   onPlay: func,
   onPause: func,
   disabled: bool,
+  variant: string,
   dense: bool,
 };
 

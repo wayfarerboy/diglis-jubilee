@@ -75,23 +75,25 @@ const Nearby = ({ data = [], map, onView, played: _played }) => {
             </Button>
           </ListSubheader>
         )}
-        {data.map((item) => (
-          <ListItem
-            {...item}
-            docId={item.id}
-            disabled={!map}
-            played={played?.includes(item.id)}
-            key={item.id}
-            className={`list-item-${item.id}`}
-            variant="list"
-            onPlay={exploreMode ? onPlay(item.id) : null}
-            onView={onView(item.id, noClose)}
-            hover={item.id === hover}
-            onEnter={exploreMode ? onEnter(item.id) : null}
-            onLeave={exploreMode ? onLeave(item.id) : null}
-            onClearHover={exploreMode ? onClearHover : null}
-          />
-        ))}
+        {data
+          .filter((item) => item.latlng)
+          .map((item) => (
+            <ListItem
+              {...item}
+              docId={item.id}
+              disabled={!map}
+              played={played?.includes(item.id)}
+              key={item.id}
+              className={`list-item-${item.id}`}
+              variant="list"
+              onPlay={exploreMode ? onPlay(item.id) : null}
+              onView={onView(item.id, noClose)}
+              hover={item.id === hover}
+              onEnter={exploreMode ? onEnter(item.id) : null}
+              onLeave={exploreMode ? onLeave(item.id) : null}
+              onClearHover={exploreMode ? onClearHover : null}
+            />
+          ))}
       </List>
     </Collapse>
   );

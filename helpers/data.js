@@ -1,16 +1,11 @@
-/*
 const data = [
   {
-    id: 'roundabout',
-    title: 'A roundabout for scooters',
-    author: 'Desmond Morris',
-    description: `Roundabouts are cool.`,
-    latlng: { lat: 52.179099128922424, lng: -2.2194821993362197 },
+    title: 'Introduction',
+    author: 'Diglis Jubilee',
+    description:
+      'Introducing Diglis Jubilee Memories, a virtual tour guide of memories from the community of Diglis.',
+    id: 'introduction',
   },
-];
-*/
-
-const data = [
   {
     title: 'Quaerat Possimus',
     author: 'Braulio Turner',

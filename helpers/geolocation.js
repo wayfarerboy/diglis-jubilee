@@ -27,7 +27,7 @@ export const bearingTo = (from, to) => {
 };
 
 export const addLocationFields = ({ item, current, bearing: _bearing }) => {
-  if (current) {
+  if (item.latlng && current) {
     const distanceValue = current.distanceTo(item.latlng);
     const bearing = bearingTo(current, item.latlng) - _bearing;
     const distance = humanDistance(distanceValue);

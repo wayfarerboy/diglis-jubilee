@@ -34,7 +34,7 @@ const _activities = [
     href: 'http://www.worcestertheatremakers.co.uk/',
   },
   {
-    text: 'Specially written poem performaed by Commandery Poet in Residence',
+    text: 'Specially written poem performed by Commandery Poet in Residence',
     linkText: 'Leena Batchelor',
     href: 'https://www.instagram.com/pixiemusepoetry/?hl=en',
   },
@@ -97,6 +97,11 @@ const _activities = [
     text: '',
     linkText: 'Camarados public living room',
     href: 'https://www.camerados.org/public-living-room',
+  },
+  {
+    text: 'Music Making with',
+    linkText: 'Worcester Snoezelen',
+    href: 'https://www.worcestersnoezelen.org.uk',
   },
 ];
 

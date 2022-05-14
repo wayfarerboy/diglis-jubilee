@@ -86,9 +86,11 @@ const Display = ({ data = [], whenCreated, sx = {} }) => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {data.map((item) => (
-        <Marker key={item.id} item={item} />
-      ))}
+      {data
+        .filter((item) => item.latlng)
+        .map((item) => (
+          <Marker key={item.id} item={item} />
+        ))}
       <ZoomControl position="bottomright" />
       <Controls data={data} position="bottomright" />
     </Wrapper>

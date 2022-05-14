@@ -68,9 +68,11 @@ const useLocate = ({
     if (inited && current) {
       if (!locationFound) {
         const bounds = Leaflet.latLngBounds(current);
-        data.forEach((item) => {
-          bounds.extend(item.latlng);
-        });
+        data
+          .filter((item) => item.latlng)
+          .forEach((item) => {
+            bounds.extend(item.latlng);
+          });
         map.panTo(bounds, { padding: [16, 16] });
         setLocationFound(true);
       }

@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import AutoAwesome from '@mui/icons-material/AutoAwesome';
-import AutoMode from '@mui/icons-material/AutoMode';
+import Explore from '@mui/icons-material/Explore';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import ListItem from '@mui/material/ListItem';
@@ -17,7 +17,7 @@ const modes = {
     description: 'Play only when near',
   },
   closest: {
-    Icon: AutoMode,
+    Icon: Explore,
     label: 'Explore mode',
     description: 'Play all, closest first',
   },

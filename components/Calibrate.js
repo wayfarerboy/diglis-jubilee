@@ -14,6 +14,7 @@ import Explore from '@mui/icons-material/Explore';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 
+import Introduction from './Introduction';
 import AppWrapper from './AppWrapper';
 import useBounds from '../hooks/useBounds';
 import useData from '../hooks/useData';
@@ -283,6 +284,14 @@ const Component = ({ onReady }) => {
                     </Typography>
                   </>
                 )}
+                <Introduction
+                  onClick={onContinue()}
+                  fullWidth
+                  size="large"
+                  variant="contained"
+                >
+                  Play introduction
+                </Introduction>
                 <FormControlLabel
                   label="Skip this step next time"
                   sx={{
@@ -306,11 +315,11 @@ const Component = ({ onReady }) => {
                 <Button
                   onClick={onContinue()}
                   fullWidth
-                  size="large"
+                  size="small"
                   variant="outlined"
                   sx={{ borderColor: 'primary.light', color: 'primary.light' }}
                 >
-                  Continue
+                  Continue without introduction
                 </Button>
               </LogoTitle>
             )}

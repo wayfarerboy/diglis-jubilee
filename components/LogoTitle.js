@@ -37,16 +37,18 @@ const LogoTitle = ({ spacing = 2, progress, children, dark }) => {
         sx={{ mt: 0 }}
         justifyContent="center"
       >
-        {progress && (
-          <CircularProgress
-            size={24}
-            color={dark ? 'primary' : 'secondary'}
-            sx={{ mr: 1 }}
-          />
-        )}
-        <Typography variant="body2" component="div">
-          {children}
-        </Typography>
+        <Grid item>
+          {progress && (
+            <CircularProgress
+              size={24}
+              color={dark ? 'primary' : 'secondary'}
+              sx={{ mr: 1 }}
+            />
+          )}
+          <Typography variant="body2" component="div">
+            {children}
+          </Typography>
+        </Grid>
       </Grid>
     </Box>
   );

@@ -25,15 +25,17 @@ const useMap = ({ ref: mapRef, data }) => {
         (layer) => layer instanceof Leaflet.Marker && map.removeLayer(layer),
       );
       const bounds = Leaflet.latLngBounds();
-      data.forEach((item) => {
-        const marker = Leaflet.marker(item.latlng);
-        marker.bindTooltip(item.title);
-        marker.addTo(map);
-        marker.addEventListener('click', () =>
-          dispatch({ type: 'setMarker', payload: item.id }),
-        );
-        bounds.extend(item.latlng);
-      });
+      data
+        .filter((item) => item.latlng)
+        .forEach((item) => {
+          const marker = Leaflet.marker(item.latlng);
+          marker.bindTooltip(item.title);
+          marker.addTo(map);
+          marker.addEventListener('click', () =>
+            dispatch({ type: 'setMarker', payload: item.id }),
+          );
+          bounds.extend(item.latlng);
+        });
       map.flyToBounds(bounds, { padding: [16, 16] });
     }
   };
@@ -42,9 +44,11 @@ const useMap = ({ ref: mapRef, data }) => {
     if (current) {
       if (!locationFound) {
         const bounds = Leaflet.latLngBounds(current);
-        data.forEach((item) => {
-          bounds.extend(item.latlng);
-        });
+        data
+          .filter((item) => item.latlng)
+          .forEach((item) => {
+            bounds.extend(item.latlng);
+          });
         map.flyToBounds(bounds, { padding: [16, 16] });
         setLocationFound(true);
       }

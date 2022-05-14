@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
+import Slack from '../components/Icons/Slack';
 import Activities from '../components/Pages/Activities';
 import Footer from '../components/Pages/Footer';
 import Link from '../components/Link';
@@ -174,8 +175,7 @@ const Home = () => {
                 Want to contribute?
               </Typography>
               <Typography variant="h4" sx={{ mb: 4 }}>
-                That&apos;s great! Here are a couple of ways you can get
-                involved:
+                That&apos;s great! Here are some ways you can get involved:
               </Typography>
               <Box
                 sx={{
@@ -189,20 +189,31 @@ const Home = () => {
                     Volunteering
                   </Typography>
                   <Typography variant="body1" paragraph>
-                    There&apos;s a lot going on, and on the day we&apos;ll be in
-                    need of volunteers for setting up stalls and activities. Any
-                    help would be most appreciated!
+                    There&apos;s a lot going on, and we&apos;d like to invite
+                    our community to volunteer and help the event go as smoothly
+                    as possible. Any help would be most appreciated!
+                  </Typography>
+                  <Typography variant="body1" paragraph>
+                    Join the discussion to stay updated and help plan and
+                    support the day&apos;s activities.
                   </Typography>
                   <Link
                     component={Button}
-                    href="mailto:volunteer@diglisjubilee.co.uk"
+                    href="https://join.slack.com/t/friendsofdiglisfields/shared_invite/zt-yvuiltiq-ZcbOYHDKvpaIQHr6c2gQNw"
                     external
                     variant="contained"
                     color="primary"
                     size="large"
+                    startIcon={<Slack sx={{ top: -2, position: 'relative' }} />}
                   >
                     Volunteer
                   </Link>
+                  <Typography variant="caption" sx={{ display: 'block' }}>
+                    alternatively{' '}
+                    <Link href="mailto:volunteer@diglisjubilee.co.uk" external>
+                      contact us via email
+                    </Link>
+                  </Typography>
                 </Box>
                 <Box>
                   <Typography variant="h5" paragraph>
@@ -210,8 +221,14 @@ const Home = () => {
                   </Typography>
                   <Typography variant="body1" paragraph>
                     Our digital history project aims to record the
-                    community&apos;s memories of Diglis, both written and
-                    spoken, and we need your help to make this happen!
+                    community&apos;s memories of Diglis and we need your help to
+                    make this happen!
+                  </Typography>
+                  <Typography variant="body1" paragraph>
+                    We&apos;ll pin each memory onto a digital map, and then
+                    present the map on the day of Diglis Jubilee as both a
+                    virtual tour guide for Diglis and an archive of our shared
+                    history.
                   </Typography>
                   <Link
                     component={Button}
