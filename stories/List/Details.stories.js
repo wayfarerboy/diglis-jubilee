@@ -13,9 +13,12 @@ const story = {
   args: {
     data,
   },
+  argTypes: {
+    onView: { action: 'viewing' },
+  },
 };
 
-export const WithDefaults = () => <Details />;
+export const WithDefaults = () => <Details onView={() => {}} />;
 export const WithValues = (props) => <Details {...props} />;
 export const WithDetails = withReduxState(
   [{ type: 'openDetails', payload: data[0] }],

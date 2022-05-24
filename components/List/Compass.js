@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Navigation from '@mui/icons-material/Navigation';
 import ButtonBase from '@mui/material/ButtonBase';
-import { oneOf, number, func, shape, object } from 'prop-types';
+import { bool, oneOf, number, func, shape, object } from 'prop-types';
 
 const Compass = ({
   size,
@@ -13,6 +13,7 @@ const Compass = ({
   onClick,
   onMouseEnter,
   onMouseLeave,
+  disabled,
 }) => {
   return (
     <Grid item sx={sx} data-help="navigation">
@@ -28,6 +29,7 @@ const Compass = ({
         container
         direction="column"
         alignItems="center"
+        disabled={disabled}
       >
         <Navigation
           sx={{
@@ -61,6 +63,7 @@ Compass.propTypes = {
   onClick: func,
   onMouseEnter: func,
   onMouseLeave: func,
+  disabled: bool,
 };
 
 export default Compass;

@@ -1,21 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import Popover from '@mui/material/Popover';
 import { useDispatch, useSelector } from 'react-redux';
 import Typography from '@mui/material/Typography';
 import MobileStepper from '@mui/material/MobileStepper';
 
+import useWidth from '../../hooks/useWidth';
 import Backdrop from './Backdrop';
-import useLocalStorage from '../../hooks/useLocalStorage';
-import { steps } from '../../helpers/help';
+import { steps as _steps } from '../../helpers/help';
 
 const Onboarding = () => {
+  const width = useWidth();
   const dispatch = useDispatch();
   const open = useSelector(({ onboarding }) => onboarding.show);
   const [anchor, setAnchor] = useState();
   const step = useSelector(({ onboarding }) => onboarding.step);
   const [nextStep, setNextStep] = useState();
-  const [skipOnboarding, setSkip] = useLocalStorage('skipOnboarding', false);
+
+  const steps = _steps.filter(({ filter }) => !filter || filter({ width }));
 
   const {
     title,
@@ -29,7 +31,6 @@ const Onboarding = () => {
 
   const onClose = (nextStep) => () => {
     if (nextStep === false) {
-      setSkip(true);
       setNextStep(false);
     } else {
       const s = step + nextStep;
@@ -60,11 +61,6 @@ const Onboarding = () => {
     }
   };
 
-  useEffect(() => {
-    if (skipOnboarding === false)
-      dispatch({ type: 'openOnboarding', payload: 0 });
-  }, [skipOnboarding]);
-
   return (
     <Component
       open={open && (Component !== Popover || !!anchor)}
@@ -79,6 +75,7 @@ const Onboarding = () => {
         ? {
             BackdropComponent: Backdrop,
             BackdropProps: {
+              onClick: onClose(false),
               invisible: false,
               show: true,
               target: open && anchor,

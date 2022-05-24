@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import { useDispatch } from 'react-redux';
 
+import Recorder from './Contribute/Recorder';
 import AppWrapper from './AppWrapper';
 import useData from '../hooks/useData';
 import Switcher from './Player/Switcher';
@@ -13,6 +14,7 @@ import Tracks from './Audio/Tracks';
 import { zoomBounds } from '../helpers/geolocation';
 import useAudioUnlocker from '../helpers/useAudioUnlocker';
 import Onboarding from './Onboarding';
+import Calibrate from './Calibrate';
 
 const Wrapper = () => {
   const [map, setMap] = useState();
@@ -28,7 +30,7 @@ const Wrapper = () => {
     }
     dispatch({ type: 'setLabel', payload: id });
     map.eachLayer((layer) => {
-      if (layer.options.docId === id) {
+      if (layer.getLatLng && layer.options.docId === id) {
         map.flyTo(layer.getLatLng(), zoomBounds.max);
       }
     });
@@ -58,6 +60,7 @@ const Wrapper = () => {
         <AppWrapper
           title="Diglis Jubilee: Memories"
           description="Explore Diglis and hear historical accounts from our community"
+          action={<Recorder size="small" />}
         />
         <Tracks data={data} />
         <Display
@@ -117,6 +120,7 @@ const Wrapper = () => {
         />
       </Box>
       <Onboarding />
+      <Calibrate />
     </>
   );
 };

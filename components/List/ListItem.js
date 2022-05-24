@@ -22,6 +22,7 @@ const Component = ({
   author,
   description,
   onPlay,
+  latlng,
   title,
   image,
   docId,
@@ -74,6 +75,7 @@ const Component = ({
           size={variant === 'list' ? 'small' : 'medium'}
           bearing={bearing}
           distance={distance}
+          disabled={!latlng}
         />
       )}
       {(variant === 'list' || dense) && (

@@ -6,6 +6,7 @@ let browser;
 let desktop;
 let mobile;
 let isIos;
+let isApple;
 
 try {
   browser = Bowser.parse(window.navigator.userAgent);
@@ -13,6 +14,7 @@ try {
     browser.platform.type === 'desktop' || browser.os.name === 'Chrome OS';
   mobile = ['tablet', 'mobile'].includes(browser.platform.type);
   isIos = mobile && browser.browser.name === 'Safari';
+  isApple = browser.browser.name === 'Safari';
 } catch (err) {} // eslint-disable-line
 
 const initialState = {
@@ -20,6 +22,7 @@ const initialState = {
     desktop,
     drawer: null,
     isIos,
+    isApple,
     menuOpen: false,
     mobile,
     mode: 'map',
@@ -37,7 +40,7 @@ const initialState = {
   map: {
     center: { lat: 52.1790048, lng: -2.2205763 },
     zoom: 16,
-    mode: 'track',
+    mode: 'map',
     detailsOpen: false,
     details: {},
     label: null,
@@ -51,7 +54,7 @@ const initialState = {
   },
   playback: {
     track: null,
-    mode: 'closest',
+    mode: null,
     muted: false,
     playing: false,
     repeatOpen: false,
@@ -244,6 +247,8 @@ const reducers = combineReducers({
           ...state,
           ignoreLocation: false,
         };
+      case 'resetMap':
+        return initialState.map;
       default:
         return state;
     }
@@ -271,7 +276,7 @@ const reducers = combineReducers({
         return {
           ...state,
           track: payload,
-          playing: !!payload,
+          playing: !!payload && (state.track !== payload || state.playing),
         };
       case 'setPlaybackMode':
         return {
@@ -299,6 +304,8 @@ const reducers = combineReducers({
           ...state,
           muted: !state.muted,
         };
+      case 'resetPlayer':
+        return initialState.playback;
       default:
         return state;
     }

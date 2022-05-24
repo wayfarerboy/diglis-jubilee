@@ -20,6 +20,7 @@ import Logo from './Logo';
 const links = [
   { href: '/', label: 'Home' },
   /* { href: '/activities', label: 'Activities' } */
+  { href: '/map', label: 'Event map' },
   { href: '/memories', label: 'Memories' },
 ];
 
@@ -30,7 +31,11 @@ const Component = ({ dark }) => {
   const onClose = () => setOpen(false);
   return (
     <>
-      <IconButton color="inherit" onClick={onOpen}>
+      <IconButton
+        sx={{ pointerEvents: 'auto' }}
+        color="inherit"
+        onClick={onOpen}
+      >
         <Menu />
       </IconButton>
       <Drawer
@@ -39,6 +44,7 @@ const Component = ({ dark }) => {
         sx={{
           '.MuiDrawer-paper': {
             width: 200,
+            pointerEvents: 'auto',
           },
         }}
       >

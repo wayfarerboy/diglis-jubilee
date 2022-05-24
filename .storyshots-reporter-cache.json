@@ -1,5 +1,10 @@
 {
-  "failed": [],
+  "failed": [
+    {
+      "title": "ComingSoon / With Defaults",
+      "filename": "__image_snapshots__/__diff_output__/storyshots-test-js-storyshots-coming-soon-with-defaults-1-diff.png"
+    }
+  ],
   "succeeded": [
     {
       "title": "List / Compass / With Bearing",
@@ -20,6 +25,18 @@
     {
       "title": "Player / Switcher / With Values",
       "filename": "__image_snapshots__/storyshots-test-js-storyshots-player-switcher-with-values-1-snap.png"
+    },
+    {
+      "title": "Loading / With Values",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-loading-with-values-1-snap.png"
+    },
+    {
+      "title": "Calibrate / With Defaults",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-calibrate-with-defaults-1-snap.png"
+    },
+    {
+      "title": "Calibrate / With Values",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-calibrate-with-values-1-snap.png"
     },
     {
       "title": "About / With Defaults",
@@ -58,16 +75,84 @@
       "filename": "__image_snapshots__/storyshots-test-js-storyshots-audio-tracks-with-playing-track-1-snap.png"
     },
     {
-      "title": "Calibrate / With Defaults",
-      "filename": "__image_snapshots__/storyshots-test-js-storyshots-calibrate-with-defaults-1-snap.png"
+      "title": "Calibrate / BackButton / With Defaults",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-calibrate-back-button-with-defaults-1-snap.png"
     },
     {
-      "title": "Calibrate / With Values",
-      "filename": "__image_snapshots__/storyshots-test-js-storyshots-calibrate-with-values-1-snap.png"
+      "title": "Calibrate / BackButton / With Values",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-calibrate-back-button-with-values-1-snap.png"
     },
     {
-      "title": "ComingSoon / With Defaults",
-      "filename": "__image_snapshots__/storyshots-test-js-storyshots-coming-soon-with-defaults-1-snap.png"
+      "title": "Calibrate / Introduction / With Defaults",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-calibrate-introduction-with-defaults-1-snap.png"
+    },
+    {
+      "title": "Calibrate / Introduction / With Values",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-calibrate-introduction-with-values-1-snap.png"
+    },
+    {
+      "title": "Calibrate / Playlist / With Defaults",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-calibrate-playlist-with-defaults-1-snap.png"
+    },
+    {
+      "title": "Calibrate / Playlist / With Values",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-calibrate-playlist-with-values-1-snap.png"
+    },
+    {
+      "title": "Calibrate / TourGuide / With Defaults",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-calibrate-tour-guide-with-defaults-1-snap.png"
+    },
+    {
+      "title": "Calibrate / TourGuide / With Values",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-calibrate-tour-guide-with-values-1-snap.png"
+    },
+    {
+      "title": "Calibrate / index / With Defaults",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-calibrate-index-with-defaults-1-snap.png"
+    },
+    {
+      "title": "Calibrate / index / With Values",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-calibrate-index-with-values-1-snap.png"
+    },
+    {
+      "title": "Contribute / Intro / With Defaults",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-contribute-intro-with-defaults-1-snap.png"
+    },
+    {
+      "title": "Contribute / Intro / With Values",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-contribute-intro-with-values-1-snap.png"
+    },
+    {
+      "title": "Contribute / Recorder / With Defaults",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-contribute-recorder-with-defaults-1-snap.png"
+    },
+    {
+      "title": "Contribute / Recorder / With Values",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-contribute-recorder-with-values-1-snap.png"
+    },
+    {
+      "title": "Contribute / RecorderButton / With Defaults",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-contribute-recorder-button-with-defaults-1-snap.png"
+    },
+    {
+      "title": "Contribute / RecorderButton / With Values",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-contribute-recorder-button-with-values-1-snap.png"
+    },
+    {
+      "title": "Contribute / RecorderForm / With Defaults",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-contribute-recorder-form-with-defaults-1-snap.png"
+    },
+    {
+      "title": "Contribute / RecorderForm / With Values",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-contribute-recorder-form-with-values-1-snap.png"
+    },
+    {
+      "title": "Contribute / RecorderPreview / With Defaults",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-contribute-recorder-preview-with-defaults-1-snap.png"
+    },
+    {
+      "title": "Contribute / RecorderPreview / With Values",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-contribute-recorder-preview-with-values-1-snap.png"
     },
     {
       "title": "Drawer / With Defaults",
@@ -88,6 +173,14 @@
     {
       "title": "Drawer / Help Active",
       "filename": "__image_snapshots__/storyshots-test-js-storyshots-drawer-help-active-1-snap.png"
+    },
+    {
+      "title": "EventMap / index / With Defaults",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-event-map-index-with-defaults-1-snap.png"
+    },
+    {
+      "title": "EventMap / index / With Values",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-event-map-index-with-values-1-snap.png"
     },
     {
       "title": "Help / With Defaults",
@@ -190,10 +283,6 @@
       "filename": "__image_snapshots__/storyshots-test-js-storyshots-loading-with-defaults-1-snap.png"
     },
     {
-      "title": "Loading / With Values",
-      "filename": "__image_snapshots__/storyshots-test-js-storyshots-loading-with-values-1-snap.png"
-    },
-    {
       "title": "Logo / With Defaults",
       "filename": "__image_snapshots__/storyshots-test-js-storyshots-logo-with-defaults-1-snap.png"
     },
@@ -208,6 +297,22 @@
     {
       "title": "LogoTitle / With Values",
       "filename": "__image_snapshots__/storyshots-test-js-storyshots-logo-title-with-values-1-snap.png"
+    },
+    {
+      "title": "LogoTitle / With Node Children",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-logo-title-with-node-children-1-snap.png"
+    },
+    {
+      "title": "LogoTitle / With Large Spacing",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-logo-title-with-large-spacing-1-snap.png"
+    },
+    {
+      "title": "LogoTitle / With No Progress",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-logo-title-with-no-progress-1-snap.png"
+    },
+    {
+      "title": "LogoTitle / With Dark Theme",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-logo-title-with-dark-theme-1-snap.png"
     },
     {
       "title": "Logos / TnlLogo / With Defaults",

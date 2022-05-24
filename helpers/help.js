@@ -1,4 +1,5 @@
 import Dialog from '@mui/material/Dialog';
+import { modes } from './modes';
 
 export const steps = [
   {
@@ -13,6 +14,7 @@ export const steps = [
     body: 'You can browse and control the currently playing memory from the Player panel, choosing either the MAP or PLAYER display...',
     anchorOrigin: { horizontal: 'center', vertical: 'bottom' },
     transformOrigin: { horizontal: 'center', vertical: 'top' },
+    filter: ({ width }) => width === 'xs',
   },
   {
     id: 'map',
@@ -44,7 +46,7 @@ export const steps = [
     ],
     after: [{ type: 'closeRepeatMenu' }],
     pause: 350,
-    body: `Tour Guide Mode automatically plays memories when they are
+    body: `${modes.moving.label} automatically plays memories when they are
     nearby.`,
     caption: `You must be in or around Diglis to switch this mode on.`,
     anchorOrigin: { horizontal: 'center', vertical: 'top' },
@@ -58,7 +60,7 @@ export const steps = [
     ],
     after: [{ type: 'closeRepeatMenu' }],
     pause: 350,
-    body: `Explore Mode waits for you to choose a memory to play.`,
+    body: `${modes.closest.label} waits for you to choose a memory to play.`,
     anchorOrigin: { horizontal: 'center', vertical: 'top' },
     transformOrigin: { horizontal: 'center', vertical: 'bottom' },
   },

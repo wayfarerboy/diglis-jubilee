@@ -1,0 +1,146 @@
+[
+  {
+    "id": "darwen",
+    "author": "Peter Darwen",
+    "title": "Walking with my mother",
+    "description": "Peter recounts his first walks around Diglis, and how the space opened up with the opening of the walking bridge.",
+    "image": "/images/darwen.jpg",
+    "audio": "/audio/darwen.mp3",
+    "latlng": {
+      "lat": 52.1763646,
+      "lng": -2.2240397
+    }
+  },
+  {
+    "id": "mazzocchi",
+    "author": "Lilliana Veronik Mazzocchi",
+    "title": "After school hangout",
+    "description": "Lilliana has some of her fondest memories of spending time with friends around the play area in Diglis fields.",
+    "image": "/images/mazzocchi.jpg",
+    "audio": "/audio/mazzocchi.mp3",
+    "latlng": {
+      "lat": 52.1781632,
+      "lng": -2.2175851
+    }
+  },
+  {
+    "id": "boraston",
+    "author": "Nicky Boraston",
+    "title": "My car wasn't where I left it",
+    "description": "Nicky recalls a rude awakening to find her car in neither the place nor the state she left it in.",
+    "image": "/images/boraston.jpg",
+    "audio": "/audio/boraston.mp3",
+    "latlng": {
+      "lat": 52.181696,
+      "lng": -2.2194849
+    }
+  },
+  {
+    "id": "breakspear",
+    "author": "Rupert Breakspear",
+    "title": "Treasures in the nature reserve",
+    "description": "Rupert talks about the rare species he's come across while strolling through the nature reserve.",
+    "image": "/images/breakspear.jpg",
+    "audio": "/audio/breakspear.mp3",
+    "latlng": {
+      "lat": 52.1765777,
+      "lng": -2.2198283
+    }
+  },
+  {
+    "id": "bourne",
+    "author": "Debbie Bourne",
+    "title": "What draws us to Diglis",
+    "description": "Debbie explains how she was originally drawn to the fields for her dog, but stays for the other benefits!",
+    "image": "/images/bourne.jpg",
+    "audio": "/audio/bourne.mp3",
+    "latlng": {
+      "lat": 52.1803521,
+      "lng": -2.2194098
+    }
+  },
+  {
+    "id": "white",
+    "author": "Minty White",
+    "title": "Lockdown walks with Bertie",
+    "description": "Minty and Bertie got to know their community through the lockdown of 2020, and made many friends in the process.",
+    "image": "/images/white.jpg",
+    "audio": "/audio/white.mp3",
+    "latlng": {
+      "lat": 52.1788456,
+      "lng": -2.2182833
+    }
+  },
+  {
+    "id": "bretherton",
+    "author": "Hayley Bretherton",
+    "title": "Walking the dog opens up Diglis",
+    "description": "Haley explains how having a dog opened up parts of Diglis she'd never explored before.",
+    "image": "/images/bretherton.jpg",
+    "audio": "/audio/bretherton.mp3",
+    "latlng": {
+      "lat": 52.1776343,
+      "lng": -2.2185108
+    }
+  },
+  {
+    "id": "gateley",
+    "author": "Sarah Gateley",
+    "title": "Diglis as a garden",
+    "description": "Sarah talks about being without a garden when first living in Diglis, and how the fields filled that gap.",
+    "image": "/images/gateley.jpg",
+    "audio": "/audio/gateley.mp3",
+    "latlng": {
+      "lat": 52.1811758,
+      "lng": -2.2186469
+    }
+  },
+  {
+    "id": "cale",
+    "author": "Claire Cale",
+    "title": "Social work drive-through",
+    "description": "Claire first came across Diglis while visiting as a social worker, and she liked what she saw!",
+    "image": "/images/cale.jpg",
+    "audio": "/audio/cale.mp3",
+    "latlng": {
+      "lat": 52.1821527,
+      "lng": -2.2191297
+    }
+  },
+  {
+    "id": "roe",
+    "author": "James Roe",
+    "title": "Long walks to play football",
+    "description": "James remembers long walks to football games becoming shorter thanks to the walking bridge.",
+    "image": "/images/roe.jpg",
+    "audio": "/audio/roe.mp3",
+    "latlng": {
+      "lat": 52.1805278,
+      "lng": -2.2189259
+    }
+  },
+  {
+    "id": "smoky",
+    "author": "Serdar 'Smokey' Duman",
+    "title": "Forming a football club",
+    "description": "When Smokey was new to Worcester he formed a football club in Diglis to bring his community together.",
+    "image": "/images/smoky.jpg",
+    "audio": "/audio/smoky.mp3",
+    "latlng": {
+      "lat": 52.1796758,
+      "lng": -2.2185718
+    }
+  },
+  {
+    "id": "elger",
+    "author": "Jon Elger",
+    "title": "Social strolling",
+    "description": "Jon walked through Diglis on several occasions to get to and from friends' boats and parties.",
+    "image": "/images/elger.jpg",
+    "audio": "/audio/elger.mp3",
+    "latlng": {
+      "lat": 52.1826131,
+      "lng": -2.2193764
+    }
+  }
+]

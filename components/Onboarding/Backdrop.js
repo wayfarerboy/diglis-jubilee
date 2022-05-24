@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
-import { any } from 'prop-types';
+import { func, any } from 'prop-types';
 
-const Backdrop = ({ target }) => {
+const Backdrop = ({ onClick, target }) => {
   const [active, setActive] = useState(false);
   const [coords, setCoords] = useState();
 
@@ -17,7 +17,6 @@ const Backdrop = ({ target }) => {
         width: (width / w) * 100,
         height: (height / h) * 100,
       };
-      console.log({ newCoords, w, h, x, y, width, height });
       setCoords(newCoords);
       setActive(true);
     } else {
@@ -27,16 +26,17 @@ const Backdrop = ({ target }) => {
 
   return (
     <Box
+      onClick={onClick}
       sx={{
         position: 'fixed',
         top: 0,
         left: 0,
         width: '100%',
         height: '100%',
-        pointerEvents: 'none',
         opacity: active ? 1 : 0,
         transition: 'opacity .3s ease-in-out',
         svg: {
+          pointerEvents: 'none',
           width: '100%',
           height: '100%',
           isolation: 'isolate',
@@ -65,6 +65,7 @@ const Backdrop = ({ target }) => {
 Backdrop.displayName = 'OnboardingBackdrop';
 Backdrop.propTypes = {
   target: any,
+  onClick: func,
 };
 
 export default Backdrop;

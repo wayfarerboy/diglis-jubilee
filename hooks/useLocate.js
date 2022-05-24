@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Leaflet from 'leaflet';
 
@@ -13,31 +13,25 @@ const useLocate = ({
   onError,
   onLocation,
 } = {}) => {
+  const locate = useRef(null);
   const [map] = useState(_map || Leaflet.map());
   const dispatch = useDispatch();
   const [inited, setInited] = useState(false);
   const [locationFound, setLocationFound] = useState(false);
   const current = useSelector(({ geolocation }) => geolocation.latlng);
+  const mode = useSelector(({ playback }) => playback.mode);
+  const [watching, setWatching] = useState(false);
 
   const onLocationError = (err) => {
     if (err.code === 1) dispatch({ type: 'locationDenied' });
     onError?.(err);
   };
 
-  const onLocationOutsideMapBounds = () => {
-    dispatch({
-      type: 'setPlaybackMode',
-      payload: 'closest',
-    });
-    onError?.({ code: -1 });
-  };
-
   useEffect(() => {
     if (!inited) {
-      const locate = Leaflet.control
+      locate.current = Leaflet.control
         .locate({
           position,
-          onLocationOutsideMapBounds,
           onLocationError,
           locateOptions: {
             setView: false,
@@ -46,7 +40,6 @@ const useLocate = ({
           },
         })
         .addTo(map);
-      locate.start();
       map.addEventListener(
         'locationfound',
         ({ latlng, heading = 0, accuracy }) => {
@@ -63,6 +56,16 @@ const useLocate = ({
       );
     }
   }, [map, setInited, inited]);
+
+  useEffect(() => {
+    if (mode === 'moving' && !watching && locate.current) {
+      setWatching(true);
+      locate.current.start();
+    } else if (mode === 'closest' && watching && locate.current) {
+      setWatching(false);
+      locate.current.stop();
+    }
+  }, [mode, watching, setWatching]);
 
   useEffect(() => {
     if (inited && current) {

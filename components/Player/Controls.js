@@ -6,23 +6,22 @@ import SkipNext from '@mui/icons-material/SkipNext';
 import SkipPrevious from '@mui/icons-material/SkipPrevious';
 import Pause from '@mui/icons-material/Pause';
 import PlayArrow from '@mui/icons-material/PlayArrow';
-import { string, bool, func } from 'prop-types';
-import { useSelector } from 'react-redux';
+import { bool, func } from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import Button from '@mui/material/Button';
 
 import Volume from './Volume';
 import Repeat from './Repeat';
 
-const Controls = ({
-  variant,
-  sx,
-  dense,
-  disabled,
-  onPlay,
-  onPause,
-  onPrev,
-  onNext,
-}) => {
+const Controls = ({ sx, dense, disabled, onPlay, onPause, onPrev, onNext }) => {
+  const dispatch = useDispatch();
   const active = useSelector(({ playback }) => playback.mode === 'closest');
+  const isIntro = useSelector(
+    ({ playback }) => playback.track === 'introduction',
+  );
+  const onExit = () => {
+    dispatch({ type: 'playTrack', payload: null });
+  };
   return (
     <Box sx={sx}>
       <Grid
@@ -42,22 +41,24 @@ const Controls = ({
           },
         }}
       >
-        {!dense && variant !== 'intro' && (
+        {!dense && (
           <Grid
             item
             sx={{
-              transform: active ? 'translateX(0)' : 'translateX(100%)',
+              transform:
+                active || isIntro ? 'translateX(0)' : 'translateX(100%)',
             }}
           >
-            <Volume sx={{ mr: 1 }} disabled={disabled} />
+            <Volume sx={{ ml: isIntro ? 3.5 : 0, mr: 1 }} disabled={disabled} />
           </Grid>
         )}
-        {!dense && variant !== 'intro' && (
+        {!dense && !isIntro && (
           <Grid item className="skip">
             <IconButton
               disabled={disabled || !onPrev}
               onClick={onPrev}
               size="small"
+              aria-label="Skip to previous track"
             >
               <SkipPrevious fontSize="large" />
             </IconButton>
@@ -68,9 +69,13 @@ const Controls = ({
             disabled={disabled || (!onPause && !onPlay)}
             size={dense ? 'small' : 'large'}
             onClick={onPause || onPlay}
+            aria-label={onPause ? 'Pause track' : 'Play track'}
             sx={{
               mx: 1,
               bgcolor: 'secondary.light',
+              '&:active,&:focus,&:hover': {
+                bgcolor: 'secondary.light',
+              },
             }}
           >
             {onPause ? (
@@ -80,18 +85,26 @@ const Controls = ({
             )}
           </IconButton>
         </Grid>
-        {(active || !dense) && variant !== 'intro' && (
+        {(active || !dense) && !isIntro && (
           <Grid item className="skip">
             <IconButton
               disabled={disabled || !onNext}
               onClick={onNext}
               size={dense ? 'small' : 'large'}
+              aria-label="Skip to next track"
             >
               <SkipNext fontSize={dense ? 'medium' : 'large'} />
             </IconButton>
           </Grid>
         )}
-        {!dense && variant !== 'intro' && (
+        {isIntro && (
+          <Grid item>
+            <Button size="small" onClick={onExit} color="inherit">
+              Exit intro
+            </Button>
+          </Grid>
+        )}
+        {!dense && !isIntro && (
           <Grid
             item
             sx={{
@@ -114,7 +127,6 @@ Controls.propTypes = {
   onPlay: func,
   onPause: func,
   disabled: bool,
-  variant: string,
   dense: bool,
 };
 

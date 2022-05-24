@@ -3,12 +3,13 @@ import Head from 'next/head';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import { useTheme } from '@mui/material/styles';
-import { string, bool } from 'prop-types';
+import { node, string, bool } from 'prop-types';
+import Grid from '@mui/material/Grid';
 
 import Logo from './Logo';
 import Menu from './Menu';
 
-const Wrapper = ({ dark, title, description }) => {
+const Wrapper = ({ action, dark, title, description }) => {
   const theme = useTheme();
   return (
     <>
@@ -22,6 +23,7 @@ const Wrapper = ({ dark, title, description }) => {
             dark ? theme.palette.common.black : theme.palette.primary.dark
           }, transparent)`,
           boxShadow: 'none',
+          pointerEvents: 'none',
         }}
       >
         <Toolbar>
@@ -35,6 +37,17 @@ const Wrapper = ({ dark, title, description }) => {
               pt: 0.75,
             }}
           />
+          {action && <Grid xs item />}
+          {action && (
+            <Grid
+              item
+              sx={{
+                mr: { sm: `320px`, md: `420px`, lg: `420px`, xl: `420px` },
+              }}
+            >
+              {action}
+            </Grid>
+          )}
         </Toolbar>
       </AppBar>
     </>
@@ -46,6 +59,7 @@ Wrapper.propTypes = {
   dark: bool,
   title: string,
   description: string,
+  action: node,
 };
 
 export default Wrapper;

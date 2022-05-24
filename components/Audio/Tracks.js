@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { arrayOf } from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 
+import useLocalStorage from '../../hooks/useLocalStorage';
 import { triggerDistance } from '../../helpers/geolocation';
 import { dataItem } from '../../helpers/propTypes';
 import usePlaylist from '../../hooks/usePlaylist';
@@ -34,14 +35,15 @@ const generateMetadata = (item) => {
   });
 };
 
-const Tracks = ({ data = [] }) => {
+const Tracks = ({ played: _played, data = [] }) => {
   const dispatch = useDispatch();
   const [active, setActive] = useState([]);
   const muted = useSelector(({ playback }) => playback.muted);
   const track = useSelector(({ playback }) => playback.track);
   const mode = useSelector(({ playback }) => playback.mode);
+  const [played, onSetHistory] = useLocalStorage('played', [], _played);
 
-  const tracks = data.filter(({ id }) => active.includes(id));
+  const tracks = data.filter(({ howler, id }) => howler && active.includes(id));
   const [item, next] = usePlaylist(data);
 
   const onPlay = () => {
@@ -53,8 +55,11 @@ const Tracks = ({ data = [] }) => {
     dispatch({ type: 'setPlaying', payload: false });
   };
 
-  const onStop = (id) => () => {
+  const onStop = (id) => {
     if (track === id) {
+      onSetHistory(
+        [...played, id].filter((val, i, arr) => arr.indexOf(val) === i),
+      );
       if (next) {
         dispatch({ type: 'playTrack', payload: next.id });
       } else {
@@ -72,10 +77,6 @@ const Tracks = ({ data = [] }) => {
     });
   };
 
-  const onExit = (id) => () => {
-    setActive(active.filter((_id) => _id !== id));
-  };
-
   useEffect(() => {
     if (track && !active.includes(track)) {
       setActive([track]);
@@ -89,7 +90,10 @@ const Tracks = ({ data = [] }) => {
       const nearby = data.filter(
         ({ distanceValue }) => distanceValue <= triggerDistance,
       );
-      if ((!track && nearby[0]?.id) || (track && track !== nearby[0]?.id)) {
+      if (
+        track !== 'introduction' &&
+        ((!track && nearby[0]?.id) || (track && track !== nearby[0]?.id))
+      ) {
         if (nearby[0]?.id) {
           dispatch({ type: 'playTrack', payload: nearby[0]?.id });
         } else {
@@ -106,12 +110,13 @@ const Tracks = ({ data = [] }) => {
       {tracks.map(({ id, howler, audio }) => (
         <Track
           key={id}
+          isIntro={id === 'introduction'}
           src={audio}
+          docId={id}
           audioRef={howler}
           onPlay={onPlay}
           onPause={onPause}
-          onStop={onStop(id)}
-          onExit={onExit(id)}
+          onStop={onStop}
           onError={onError}
           muted={muted}
           active={track === id}

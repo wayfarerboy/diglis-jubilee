@@ -62,7 +62,10 @@ const Player = ({ onView = noop, data = [], sx = {} }) => {
     <Box
       sx={{
         ...sx,
-        zIndex: mode === 'track' || detailsOpen || nearby ? 'tooltip' : 0,
+        zIndex: {
+          xs: mode === 'track' || detailsOpen || nearby ? 'tooltip' : 0,
+          sm: 'appBar',
+        },
       }}
       data-help="player"
     >
@@ -83,7 +86,17 @@ const Player = ({ onView = noop, data = [], sx = {} }) => {
           <Artwork onClick={playing ? onPause : onPlay} image={item.image} />
         </Box>
       </Collapse>
-      <List sx={dense ? { boxShadow: 3, position: 'relative', zIndex: 2 } : {}}>
+      <List
+        sx={
+          dense
+            ? {
+                boxShadow: 3,
+                position: 'relative',
+                zIndex: 2,
+              }
+            : {}
+        }
+      >
         <ListItem
           dense={dense}
           disablePadding
@@ -94,8 +107,19 @@ const Player = ({ onView = noop, data = [], sx = {} }) => {
           {...item}
         />
       </List>
-      {!dense && <Seeker key={item?.id} audio={audio} sx={{ mb: 1, mx: 4 }} />}
-      {!dense && <Controls sx={{ mx: 4 }} {...controls} />}
+      {!dense && (
+        <Seeker
+          key={item?.id}
+          audio={audio}
+          sx={{ mb: { xs: 0, sm: 1 }, mx: 4 }}
+        />
+      )}
+      {!dense && (
+        <Controls
+          sx={{ mx: 4, position: 'relative', top: { xs: -16, sm: 0 } }}
+          {...controls}
+        />
+      )}
     </Box>
   );
 };

@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import Leaflet from 'leaflet';
 import { useMap } from 'react-leaflet';
 import { string } from 'prop-types';
+import { useSelector } from 'react-redux';
 import GlobalStyles from '@mui/material/GlobalStyles';
 
 import useBounds from '../../hooks/useBounds';
@@ -26,6 +27,9 @@ const ZoomToFit = ({ data = [], position = 'topleft' }) => {
   const [inited, setInited] = useState(false);
   const bounds = useBounds({ data });
   const map = useMap({ data });
+  const exploreMode = useSelector(
+    ({ playback }) => playback.mode === 'closest',
+  );
 
   const onZoomToFit = useCallback(() => {
     map.flyToBounds(bounds);
@@ -58,6 +62,7 @@ const ZoomToFit = ({ data = [], position = 'topleft' }) => {
       Leaflet.control.zoomToFit = (opts) => new Leaflet.Control.ZoomToFit(opts);
 
       Leaflet.control.zoomToFit({ position }).addTo(map);
+      if (exploreMode) onZoomToFit();
       setInited(true);
     }
   }, [inited, setInited, map]);

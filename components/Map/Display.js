@@ -9,7 +9,7 @@ import Bounds from './Bounds';
 import Marker from './Marker';
 import Controls from './Controls';
 import { zoomBounds } from '../../helpers/geolocation';
-import ManualLocation from './ManualLocation';
+//import ManualLocation from './ManualLocation';
 
 const Display = ({ data = [], whenCreated, sx = {} }) => {
   const theme = useTheme();
@@ -80,7 +80,7 @@ const Display = ({ data = [], whenCreated, sx = {} }) => {
       zoomControl={false}
       whenCreated={whenCreated}
     >
-      <ManualLocation />
+      {/*<ManualLocation />*/}
       <Bounds pad={1.5} data={data} />
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

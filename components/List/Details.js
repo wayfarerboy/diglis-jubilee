@@ -76,6 +76,7 @@ const Details = ({ data = [], onView, sx = {} }) => {
               ) : (
                 <Compass
                   sx={{ display: 'inline-block', pr: 1 }}
+                  disabled={!item?.latlng}
                   size="small"
                   {...(item || {})}
                   onClick={onView(item?.id)}
