@@ -10,7 +10,6 @@ import ChevronRight from '@mui/icons-material/ChevronRight';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import { ThemeProvider } from '@mui/material/styles';
-import Box from '@mui/material/Box';
 
 import Logo from '../Logo';
 import useWidth from '../../hooks/useWidth';
