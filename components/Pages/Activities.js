@@ -14,7 +14,7 @@ const _activities = [
     href: 'https://www.dancefest.co.uk/',
   },
   {
-    text: 'Live graffiti art from',
+    text: 'Live street art from',
     linkText: 'Worcester Paint Festival Triangle',
     href: 'https://worcesterpaintfestival.co.uk/',
   },
