@@ -60,7 +60,14 @@ const Wrapper = () => {
         <AppWrapper
           title="Diglis Jubilee: Memories"
           description="Explore Diglis and hear historical accounts from our community"
-          action={<Recorder size="small" />}
+          action={
+            <Recorder
+              size="small"
+              sx={{ pointerEvents: 'auto' }}
+              color="primary"
+              variant="contained"
+            />
+          }
         />
         <Tracks data={data} />
         <Display

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import IconButton from '@mui/material/IconButton';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -12,6 +12,7 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import { useSelector, useDispatch } from 'react-redux';
 
 import lottery from '../assets/affiliates/lottery.png';
 import Link from './Link';
@@ -26,9 +27,10 @@ const links = [
 
 const Component = ({ dark }) => {
   const router = useRouter();
-  const [open, setOpen] = useState(false);
-  const onOpen = () => setOpen(true);
-  const onClose = () => setOpen(false);
+  const dispatch = useDispatch();
+  const open = useSelector(({ app }) => app.menuOpen);
+  const onOpen = () => dispatch({ type: 'menuOpen' });
+  const onClose = () => dispatch({ type: 'menuClose' });
   return (
     <>
       <IconButton
@@ -42,6 +44,8 @@ const Component = ({ dark }) => {
         open={open}
         onClose={onClose}
         sx={{
+          zIndex: 'modal',
+          position: 'relative',
           '.MuiDrawer-paper': {
             width: 200,
             pointerEvents: 'auto',
@@ -62,6 +66,7 @@ const Component = ({ dark }) => {
               href={href}
               shallow
               selected={href === router.asPath}
+              onClick={onClose}
             >
               <ListItemText primary={label} />
             </ListItem>
