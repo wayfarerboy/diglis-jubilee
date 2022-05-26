@@ -10,7 +10,11 @@ import ChevronRight from '@mui/icons-material/ChevronRight';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import { ThemeProvider } from '@mui/material/styles';
+import Add from '@mui/icons-material/Add';
+import IconButton from '@mui/material/IconButton';
+import Menu from '@mui/icons-material/Menu';
 
+import Recorder from '../Contribute/Recorder';
 import Logo from '../Logo';
 import useWidth from '../../hooks/useWidth';
 import { darkTheme } from '../../helpers/theme';
@@ -24,6 +28,7 @@ const Component = () => {
   const [preMode, setPreMode] = useState();
   const playMode = useSelector(({ playback }) => playback.mode);
 
+  const onOpenMenu = () => dispatch({ type: 'menuOpen' });
   const onChoose = (mode) => () => setPreMode(mode);
 
   const onSwitch = () => setPreMode();
@@ -72,7 +77,7 @@ const Component = () => {
             <>
               <Typography variant="body1" color="text.secondary" paragraph>
                 This project plays audio recordings from the Diglis community.
-                There are two ways to play these tracks:
+                There are two ways to play, and one way to get involved:
               </Typography>
               <List>
                 {modeList.map(({ id, Icon, label, body }) => (
@@ -88,10 +93,15 @@ const Component = () => {
                     <ChevronRight fontSize="large" sx={{ ml: 1 }} />
                   </ListItem>
                 ))}
+                <Recorder component={ListItem} button disableGutters>
+                  <Add fontSize="large" sx={{ mr: 2 }} />
+                  <ListItemText
+                    primary="Add a memory"
+                    secondary="Contribute to the project by recording your own memory using our voice recorder."
+                  />
+                  <ChevronRight fontSize="large" sx={{ ml: 1 }} />
+                </Recorder>
               </List>
-              <Typography color="text.secondary" variant="caption">
-                Select one of the modes above.
-              </Typography>
             </>
           )}
           {preMode === 'moving' && (
@@ -101,6 +111,19 @@ const Component = () => {
             <Playlist onSwitch={onSwitch} onReady={onModeReady} />
           )}
         </DialogContent>
+        <IconButton
+          sx={{
+            display: { sm: 'none' },
+            position: 'absolute',
+            top: 4,
+            left: 4,
+            zIndex: 'modal',
+          }}
+          color="inherit"
+          onClick={onOpenMenu}
+        >
+          <Menu />
+        </IconButton>
       </Dialog>
     </ThemeProvider>
   );

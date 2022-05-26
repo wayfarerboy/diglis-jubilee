@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic';
 import { ThemeProvider } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
-import { string, bool } from 'prop-types';
+import { any, bool } from 'prop-types';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogActions from '@mui/material/DialogActions';
 import Typography from '@mui/material/Typography';
@@ -23,9 +23,11 @@ const RecorderButton = dynamic(() => import('./RecorderButton'), {
 });
 
 const Recorder = ({
-  size = 'small',
   intro: _intro = true,
   open: _open = false,
+  children = 'Add a memory',
+  component: Component = Button,
+  ...props
 }) => {
   const [open, setOpen] = useState(_open);
   const dispatch = useDispatch();
@@ -97,15 +99,9 @@ const Recorder = ({
 
   return (
     <>
-      <Button
-        sx={{ pointerEvents: 'auto' }}
-        onClick={onOpen}
-        variant="contained"
-        size={size}
-        color="primary"
-      >
-        Get involved
-      </Button>
+      <Component onClick={onOpen} {...props}>
+        {children}
+      </Component>
       <ThemeProvider theme={darkTheme}>
         <Dialog
           TransitionProps={{ onExited }}
@@ -117,11 +113,11 @@ const Recorder = ({
         >
           <DialogTitle>
             {intro
-              ? 'Get involved'
+              ? 'Add a memory'
               : saved
               ? 'Thanks for the memory!'
               : audioSrc
-              ? 'Add your memory'
+              ? 'Submit your memory'
               : 'Record your memory'}
           </DialogTitle>
           <DialogContent>
@@ -185,6 +181,6 @@ const Recorder = ({
 };
 
 Recorder.displayName = 'ContributeRecorder';
-Recorder.propTypes = { intro: bool, size: string, open: bool };
+Recorder.propTypes = { children: any, intro: bool, open: bool };
 
 export default Recorder;
