@@ -142,5 +142,149 @@
       "lat": 52.1826131,
       "lng": -2.2193764
     }
+  },
+  {
+    "id": "marshall",
+    "author": "Sheila Marshall",
+    "title": "Unlocking Diglis in lockdown",
+    "description": "Sheila hadn't really explored Diglis until lockdown (and bright sunshine) shone a spotlight on it.",
+    "image": "/images/marshall.jpg",
+    "audio": "/audio/marshall.mp3",
+    "latlng": {
+      "lat": 52.1809575,
+      "lng": -2.2196011
+    }
+  },
+  {
+    "id": "powis",
+    "author": "Sara Hayward & Paul Powis",
+    "title": "Raising a family in Diglis",
+    "description": "Sara and Paul talk about their time as a young family, and the changes in Diglis that happened over that time.",
+    "image": "/images/powis.jpg",
+    "audio": "/audio/powis.mp3",
+    "latlng": {
+      "lat": 52.1768932,
+      "lng": -2.2244993
+    }
+  },
+  {
+    "id": "cummings",
+    "author": "Gareth Cummings",
+    "title": "The force was strong in that one",
+    "description": "Gareth remembers his dad sharing a fun 'fact' about a nearby industrial unit.",
+    "image": "/images/cummings.jpg",
+    "audio": "/audio/cummings.mp3",
+    "latlng": {
+      "lat": 52.1799388,
+      "lng": -2.2192814
+    }
+  },
+  {
+    "id": "hardie",
+    "author": "Jan Hardie",
+    "title": "I'll just get my crocs",
+    "description": "Jan recalls receiving a heroic call to action to protect the park and its residents.",
+    "image": "/images/hardie.jpg",
+    "audio": "/audio/hardie.mp3",
+    "latlng": {
+      "lat": 52.1787446,
+      "lng": -2.2179197
+    }
+  },
+  {
+    "id": "davies",
+    "author": "Jonathan Davies",
+    "title": "Train rides ",
+    "description": "Jonathan talks about his dad Peter remembering his time riding the train in Diglis.",
+    "image": "/images/davies.jpg",
+    "audio": "/audio/davies.mp3",
+    "latlng": {
+      "lat": 52.1775994,
+      "lng": -2.2176778
+    }
+  },
+  {
+    "id": "need",
+    "author": "Sue Need",
+    "title": "Quiet walks together",
+    "description": "Sue talks about sharing quiet walks round the nature reserve with her husband.",
+    "image": "/images/need.jpg",
+    "audio": "/audio/need.mp3",
+    "latlng": {
+      "lat": 52.1763954,
+      "lng": -2.2212512
+    }
+  },
+  {
+    "id": "asquith",
+    "author": "Steph Asquith",
+    "title": "Lilly's first park run",
+    "description": "Steph remembers walking her first dog for the first time off-lead. ",
+    "image": "/images/asquith.jpg",
+    "audio": "/audio/asquith.mp3",
+    "latlng": {
+      "lat": 52.1780182,
+      "lng": -2.2182279
+    }
+  },
+  {
+    "id": "connell",
+    "author": "Trisha Connell",
+    "title": "History came to life in lockdown",
+    "description": "Trisha contrasts fighting through nature to reach the riverside years ago with her recent foray in lockdown into DIglis history.",
+    "image": "/images/connell.jpg",
+    "audio": "/audio/connell.mp3",
+    "latlng": {
+      "lat": 52.1822536,
+      "lng": -2.2231953
+    }
+  },
+  {
+    "id": "griffiths",
+    "author": "Brian Griffiths",
+    "title": "Walking to work was an adventure",
+    "description": "Brian walked to work through floodwaters across Diglis fields, in a time before its development.",
+    "image": "/images/griffiths.jpg",
+    "audio": "/audio/griffiths.mp3",
+    "latlng": {
+      "lat": 52.1783327,
+      "lng": -2.2186892
+    }
+  },
+  {
+    "id": "colloby",
+    "author": "Sarah Colloby",
+    "title": "Planting damson trees",
+    "description": "Sarah looks forward to a time when she can pick fruit from the community trees she planted in Diglis.",
+    "image": "/images/colloby.jpg",
+    "audio": "/audio/colloby.mp3",
+    "latlng": {
+      "lat": 52.1774051,
+      "lng": -2.2195689
+    }
+  },
+  {
+    "id": "dennison",
+    "author": "Lucy Dennison",
+    "title": "Circular walks were a lifeline",
+    "description": "Lucy has fond memories of meeting with her friend Jackie in lockdown for circular walks around the field.",
+    "image": "/images/dennison.jpg",
+    "audio": "/audio/dennison.mp3",
+    "latlng": {
+      "lat": 52.1802616,
+      "lng": -2.2183995
+    }
+  },
+  {
+    "id": "wattison",
+    "author": "Marie-Claire Wattison",
+    "title": "Emergency landing",
+    "description": "Marie-Claire looks back to a time when a hot air balloon made an emergency landing.",
+    "image": "/images/wattison.jpg",
+    "audio": "/audio/wattison.mp3",
+    "latlng": {
+      "lat": 52.1814326,
+      "lng": -2.2193222
+    }
   }
 ]
