@@ -70,7 +70,9 @@ const _activities = [
     href: 'https://www.diglishub.co.uk',
   },
   {
-    text: 'Nature walks by local expert Glen Dipple',
+    text: 'Nature walks by',
+    linkText: 'Worcester Environmental Group',
+    href: 'https://www.theweg.org.uk',
   },
   {
     text: 'Boat dressing and flotilla by the community at',
@@ -94,7 +96,7 @@ const _activities = [
   },
   {
     text: '',
-    linkText: 'Camarados public living room',
+    linkText: 'Camerados public living room',
     href: 'https://www.camerados.org/public-living-room',
   },
   {
@@ -120,53 +122,62 @@ const Activities = ({ noRandom, sx = {} }) => {
     [],
   );
   return (
-    <NoSsr>
-      {activities.map(({ text = '', linkText = '', href, path }, i) => (
-        <Typography
-          component="span"
-          variant="inherit"
-          key={`${text || linkText}-${i}`}
-          sx={{
-            color: ['primary.light', 'secondary.light'][i % 2],
-            mr: 1,
-            fontWeight: 700,
-            ...sx,
-          }}
-        >
-          {text}
-          {linkText ? ' ' : ''}
-          {typeof linkText === 'string' && (
-            <Link
-              href={href || path}
-              sx={{ color: 'inherit' }}
-              external={!!href}
-              shallow={!!path}
-              target={href ? '_blank' : null}
-            >
-              {linkText}
-            </Link>
-          )}
-          {typeof linkText === 'object' &&
-            linkText.map((text, i) => (
-              <React.Fragment key={`${text}-${i}`}>
-                <Link
-                  href={href[i]}
-                  sx={{ color: 'inherit' }}
-                  external
-                  target="_blank"
-                >
-                  {text}
-                </Link>
-                {i === linkText.length - 2
-                  ? ' and '
-                  : i < linkText.length - 1
-                  ? ', '
-                  : ''}
-              </React.Fragment>
-            ))}{' '}
-        </Typography>
-      ))}
-    </NoSsr>
+    <>
+      <Typography
+        paragraph
+        sx={{ color: 'text.secondary', fontWeight: 700 }}
+        variant="h5"
+      >
+        Artists and exhibitors
+      </Typography>
+      <NoSsr>
+        {activities.map(({ text = '', linkText = '', href, path }, i) => (
+          <Typography
+            component="span"
+            variant="inherit"
+            key={`${text || linkText}-${i}`}
+            sx={{
+              color: ['primary.light', 'secondary.light'][i % 2],
+              mr: 1,
+              fontWeight: 700,
+              ...sx,
+            }}
+          >
+            {text}
+            {linkText ? ' ' : ''}
+            {typeof linkText === 'string' && (
+              <Link
+                href={href || path}
+                sx={{ color: 'inherit' }}
+                external={!!href}
+                shallow={!!path}
+                target={href ? '_blank' : null}
+              >
+                {linkText}
+              </Link>
+            )}
+            {typeof linkText === 'object' &&
+              linkText.map((text, i) => (
+                <React.Fragment key={`${text}-${i}`}>
+                  <Link
+                    href={href[i]}
+                    sx={{ color: 'inherit' }}
+                    external
+                    target="_blank"
+                  >
+                    {text}
+                  </Link>
+                  {i === linkText.length - 2
+                    ? ' and '
+                    : i < linkText.length - 1
+                    ? ', '
+                    : ''}
+                </React.Fragment>
+              ))}{' '}
+          </Typography>
+        ))}
+      </NoSsr>
+    </>
   );
 };
 

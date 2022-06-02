@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { ThemeProvider } from '@mui/material/styles';
 
+import DogShow from '../components/Pages/DogShow';
 import Footer from '../components/Pages/Footer';
 import { darkTheme } from '../helpers/theme';
 import WhatsOn from '../components/Pages/WhatsOn';
@@ -29,14 +30,14 @@ const Component = () => (
         <Typography
           variant="h2"
           color="primary.main"
-          sx={{ textAlign: 'center', mt: 10, mb: 2 }}
+          sx={{ textAlign: { xs: 'left', sm: 'center' }, mt: 10, mb: 2 }}
         >
           What&apos;s On
         </Typography>
 
         <Box
           sx={{
-            mb: 10,
+            mb: 2,
             display: 'grid',
             gridTemplateColumns: { xs: '1fr', sm: '5fr 4fr' },
             gap: 2,
@@ -45,17 +46,16 @@ const Component = () => (
           <Typography variant="h5">
             <WhatsOn />
           </Typography>
-          <Typography variant="body1" sx={{ alignSelf: 'center' }}>
-            <Typography
-              variant="body1"
-              sx={{ fontWeight: 700 }}
-              paragraph
-              color="primary.main"
-            >
-              Artists and exhibitors
-            </Typography>
-            <Activities sx={{ fontWeight: 300 }} />
+          <Typography
+            variant="body1"
+            component="div"
+            sx={{ mt: { xs: 0, sm: 3 } }}
+          >
+            <DogShow />
           </Typography>
+        </Box>
+        <Box sx={{ mt: 4, textAlign: { xs: 'left', sm: 'center' }, mb: 10 }}>
+          <Activities sx={{ fontWeight: 300, typography: 'body1' }} />
         </Box>
       </Container>
     </Box>
