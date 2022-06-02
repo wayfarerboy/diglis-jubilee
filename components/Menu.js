@@ -21,6 +21,7 @@ import Logo from './Logo';
 const links = [
   { href: '/', label: 'Home' },
   /* { href: '/activities', label: 'Activities' } */
+  { href: '/whats-on', label: `What's on` },
   { href: '/map', label: 'Event map' },
   { href: '/memories', label: 'Memories' },
 ];

@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import NoSsr from '@mui/material/NoSsr';
-import { bool } from 'prop-types';
+import { object, bool } from 'prop-types';
 import Typography from '@mui/material/Typography';
 
 import Link from '../Link';
@@ -59,7 +59,6 @@ const _activities = [
     linkText: 'Café Afloat',
     href: 'https://www.facebook.com/Cafe-Afloat-265418490330744/',
   },
-  { linkText: 'Digital community history tour', path: '/memories' },
   {
     text: 'Train rides by',
     linkText: 'Worcester and District Model Engineers',
@@ -103,9 +102,19 @@ const _activities = [
     linkText: 'Worcester Snoezelen',
     href: 'https://www.worcestersnoezelen.org.uk',
   },
+  {
+    text: 'Bollywood performance & workshop from',
+    linkText: 'Unity Arts',
+    href: 'https://www.facebook.com/Unity-Arts-304265143617403',
+  },
+  {
+    text: 'Cycling fun with',
+    linkText: ['Worcester St. Johns cycling club', 'Women on Wheels'],
+    href: ['https://wsjcc.co.uk', 'https://women-on-wheels.co.uk'],
+  },
 ];
 
-const Activities = ({ noRandom }) => {
+const Activities = ({ noRandom, sx = {} }) => {
   const activities = useMemo(
     () => (noRandom ? _activities : _activities.sort(byRandom)),
     [],
@@ -121,6 +130,7 @@ const Activities = ({ noRandom }) => {
             color: ['primary.light', 'secondary.light'][i % 2],
             mr: 1,
             fontWeight: 700,
+            ...sx,
           }}
         >
           {text}
@@ -161,6 +171,6 @@ const Activities = ({ noRandom }) => {
 };
 
 Activities.displayName = 'PagesActivities';
-Activities.propTypes = { noRandom: bool };
+Activities.propTypes = { sx: object, noRandom: bool };
 
 export default Activities;
