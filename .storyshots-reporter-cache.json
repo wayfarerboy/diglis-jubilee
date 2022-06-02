@@ -419,6 +419,14 @@
       "filename": "__image_snapshots__/storyshots-test-js-storyshots-pages-activities-with-defaults-1-snap.png"
     },
     {
+      "title": "Pages / DogShow / With Defaults",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-pages-dog-show-with-defaults-1-snap.png"
+    },
+    {
+      "title": "Pages / DogShow / With Values",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-pages-dog-show-with-values-1-snap.png"
+    },
+    {
       "title": "Pages / Footer / With Defaults",
       "filename": "__image_snapshots__/storyshots-test-js-storyshots-pages-footer-with-defaults-1-snap.png"
     },
@@ -441,6 +449,14 @@
     {
       "title": "Pages / Section / With Values",
       "filename": "__image_snapshots__/storyshots-test-js-storyshots-pages-section-with-values-1-snap.png"
+    },
+    {
+      "title": "Pages / WhatsOn / With Defaults",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-pages-whats-on-with-defaults-1-snap.png"
+    },
+    {
+      "title": "Pages / WhatsOn / With Values",
+      "filename": "__image_snapshots__/storyshots-test-js-storyshots-pages-whats-on-with-values-1-snap.png"
     },
     {
       "title": "Player / Artwork / With No Image",

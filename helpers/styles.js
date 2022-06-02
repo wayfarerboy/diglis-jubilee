@@ -13,11 +13,11 @@ export const globalStyles = (
 
 export const globalStylesDark = (
   <GlobalStyles
-    styles={{
+    styles={(theme) => ({
       'body, #__next': {
         minHeight: '100%',
-        bgcolor: 'background.default',
+        background: theme.palette.background.default,
       },
-    }}
+    })}
   />
 );
