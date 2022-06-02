@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import NoSsr from '@mui/material/NoSsr';
-import { bool } from 'prop-types';
+import { object, bool } from 'prop-types';
 import Typography from '@mui/material/Typography';
 
 import Link from '../Link';
@@ -59,7 +59,6 @@ const _activities = [
     linkText: 'Café Afloat',
     href: 'https://www.facebook.com/Cafe-Afloat-265418490330744/',
   },
-  { linkText: 'Digital community history tour', path: '/memories' },
   {
     text: 'Train rides by',
     linkText: 'Worcester and District Model Engineers',
@@ -71,7 +70,9 @@ const _activities = [
     href: 'https://www.diglishub.co.uk',
   },
   {
-    text: 'Nature walks by local expert Glen Dipple',
+    text: 'Nature walks by',
+    linkText: 'Worcester Environmental Group',
+    href: 'https://www.theweg.org.uk',
   },
   {
     text: 'Boat dressing and flotilla by the community at',
@@ -95,7 +96,7 @@ const _activities = [
   },
   {
     text: '',
-    linkText: 'Camarados public living room',
+    linkText: 'Camerados public living room',
     href: 'https://www.camerados.org/public-living-room',
   },
   {
@@ -103,64 +104,84 @@ const _activities = [
     linkText: 'Worcester Snoezelen',
     href: 'https://www.worcestersnoezelen.org.uk',
   },
+  {
+    text: 'Bollywood performance & workshop from',
+    linkText: 'Unity Arts',
+    href: 'https://www.facebook.com/Unity-Arts-304265143617403',
+  },
+  {
+    text: 'Cycling fun with',
+    linkText: ['Worcester St. Johns cycling club', 'Women on Wheels'],
+    href: ['https://wsjcc.co.uk', 'https://women-on-wheels.co.uk'],
+  },
 ];
 
-const Activities = ({ noRandom }) => {
+const Activities = ({ noRandom, sx = {} }) => {
   const activities = useMemo(
     () => (noRandom ? _activities : _activities.sort(byRandom)),
     [],
   );
   return (
-    <NoSsr>
-      {activities.map(({ text = '', linkText = '', href, path }, i) => (
-        <Typography
-          component="span"
-          variant="inherit"
-          key={`${text || linkText}-${i}`}
-          sx={{
-            color: ['primary.light', 'secondary.light'][i % 2],
-            mr: 1,
-            fontWeight: 700,
-          }}
-        >
-          {text}
-          {linkText ? ' ' : ''}
-          {typeof linkText === 'string' && (
-            <Link
-              href={href || path}
-              sx={{ color: 'inherit' }}
-              external={!!href}
-              shallow={!!path}
-              target={href ? '_blank' : null}
-            >
-              {linkText}
-            </Link>
-          )}
-          {typeof linkText === 'object' &&
-            linkText.map((text, i) => (
-              <React.Fragment key={`${text}-${i}`}>
-                <Link
-                  href={href[i]}
-                  sx={{ color: 'inherit' }}
-                  external
-                  target="_blank"
-                >
-                  {text}
-                </Link>
-                {i === linkText.length - 2
-                  ? ' and '
-                  : i < linkText.length - 1
-                  ? ', '
-                  : ''}
-              </React.Fragment>
-            ))}{' '}
-        </Typography>
-      ))}
-    </NoSsr>
+    <>
+      <Typography
+        paragraph
+        sx={{ color: 'text.secondary', fontWeight: 700 }}
+        variant="h5"
+      >
+        Artists and exhibitors
+      </Typography>
+      <NoSsr>
+        {activities.map(({ text = '', linkText = '', href, path }, i) => (
+          <Typography
+            component="span"
+            variant="inherit"
+            key={`${text || linkText}-${i}`}
+            sx={{
+              color: ['primary.light', 'secondary.light'][i % 2],
+              mr: 1,
+              fontWeight: 700,
+              ...sx,
+            }}
+          >
+            {text}
+            {linkText ? ' ' : ''}
+            {typeof linkText === 'string' && (
+              <Link
+                href={href || path}
+                sx={{ color: 'inherit' }}
+                external={!!href}
+                shallow={!!path}
+                target={href ? '_blank' : null}
+              >
+                {linkText}
+              </Link>
+            )}
+            {typeof linkText === 'object' &&
+              linkText.map((text, i) => (
+                <React.Fragment key={`${text}-${i}`}>
+                  <Link
+                    href={href[i]}
+                    sx={{ color: 'inherit' }}
+                    external
+                    target="_blank"
+                  >
+                    {text}
+                  </Link>
+                  {i === linkText.length - 2
+                    ? ' and '
+                    : i < linkText.length - 1
+                    ? ', '
+                    : ''}
+                </React.Fragment>
+              ))}{' '}
+          </Typography>
+        ))}
+      </NoSsr>
+    </>
   );
 };
 
 Activities.displayName = 'PagesActivities';
-Activities.propTypes = { noRandom: bool };
+Activities.propTypes = { sx: object, noRandom: bool };
 
 export default Activities;
